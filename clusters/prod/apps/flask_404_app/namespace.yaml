@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: "404"
+  name: flask-404-app
   labels:
     app: flask-404
     environment: production
