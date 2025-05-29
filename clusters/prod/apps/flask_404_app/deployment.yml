@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-404-app
+  labels:
+    app: flask-404
+    environment: production
+    team: devops
+    version: v1.0.0
+  namespace: flask-404-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: flask-404
+  template:
+    metadata:
+      labels:
+        app: flask-404
+    spec:
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 3000
+        fsGroup: 2000
+      containers:
+        - name: flask-404
+          image: docker.io/2058615mangal/flask_404_app:v1.0
+          ports:
+            - containerPort: 5000
+          securityContext:
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            capabilities:
+              drop:
+                - ALL
+            readOnlyRootFilesystem: true
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "200m"
+            requests:
+              memory: "64Mi"
+              cpu: "100m"
