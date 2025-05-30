@@ -25,13 +25,6 @@ spec:
       containers:
         - name: flask-404
           image: docker.io/2058615mangal/flask_404_app:v1.0
-          args:
-            - gunicorn
-            - app:app
-            - --bind
-            - 0.0.0.0:5000
-            - --worker-tmp-dir
-            - /tmp
           ports:
             - containerPort: 5000
           securityContext:
@@ -40,7 +33,7 @@ spec:
             capabilities:
               drop:
                 - ALL
-            readOnlyRootFilesystem: true
+            readOnlyRootFilesystem: false
           resources:
             limits:
               memory: "128Mi"
@@ -48,10 +41,4 @@ spec:
             requests:
               memory: "64Mi"
               cpu: "100m"
-          volumemounts:
-            - name: tmp-volume
-              mountPath: /tmp
       restartPolicy: Always
-      volumes:
-        - name: tmp-volume
-          emptyDir: {}
