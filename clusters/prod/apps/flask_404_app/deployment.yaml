@@ -41,3 +41,10 @@ spec:
             requests:
               memory: "64Mi"
               cpu: "100m"
+          volumemounts:
+            - name: tmp-volume
+              mountPath: /tmp
+      restartPolicy: Always
+      volumes:
+        - name: tmp-volume
+          emptyDir: {}
