@@ -1,0 +1,112 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkins
+  namespace: jenkins
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jenkins-server
+  template:
+    metadata:
+      labels:
+        app: jenkins-server
+    spec:
+      securityContext:
+        fsGroup: 1000
+        runAsUser: 1000
+      serviceAccountName: jenkins-admin
+      initContainers:
+        - name: install-ca-cert
+          image: jenkins/jenkins:lts-jdk17
+          command: ["bash", "-c"]
+          args:
+            - |
+              set -e
+              echo "===> Setting up system trust store"
+              cp /mnt/ca/kommander-ca.crt /usr/local/share/ca-certificates/kommander-ca.crt
+              update-ca-certificates
+
+              echo "===> Preparing Java keystore"
+              CACERTS_PATH=/keystore/cacerts
+
+              # Copy default Java keystore to shared volume
+              cp $JAVA_HOME/lib/security/cacerts $CACERTS_PATH
+
+              echo "===> Importing kommander-ca into Java keystore"
+              keytool -import -trustcacerts \
+                -alias kommander-ca \
+                -file /mnt/ca/kommander-ca.crt \
+                -keystore $CACERTS_PATH \
+                -storepass changeit \
+                -noprompt
+
+              echo "===> Verifying certificate import"
+              keytool -list -keystore $CACERTS_PATH -storepass changeit -alias kommander-ca
+
+              echo "===> Custom CA installed into both system trust store and Java keystore successfully"
+
+          volumeMounts:
+            - name: kommander-ca
+              mountPath: /mnt/ca
+            - name: kommander-ca-store
+              mountPath: /etc/ssl/certs
+            - name: shared-keystore
+              mountPath: /keystore
+          securityContext:
+            runAsUser: 0
+      containers:
+        - name: jenkins
+          image: jenkins/jenkins:lts-jdk17
+          resources:
+            limits:
+              memory: "2Gi"
+              cpu: "1000m"
+            requests:
+              memory: "500Mi"
+              cpu: "500m"
+          env:
+            - name: JENKINS_OPTS
+              value: "--prefix=/dkp/kommander/jenkins"
+            - name: JAVA_OPTS
+              value: "-Djavax.net.ssl.trustStore=$JAVA_HOME/lib/security/cacerts -Djavax.net.ssl.trustStorePassword=changeit"
+          ports:
+            - name: httpport
+              containerPort: 8080
+            - name: jnlpport
+              containerPort: 50000
+          livenessProbe:
+            httpGet:
+              path: "/dkp/kommander/jenkins/login"
+              port: 8080
+            initialDelaySeconds: 90
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 5
+          readinessProbe:
+            httpGet:
+              path: "/dkp/kommander/jenkins/login"
+              port: 8080
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+          volumeMounts:
+            - name: jenkins-data
+              mountPath: /var/jenkins_home
+            - name: kommander-ca-store
+              mountPath: /etc/ssl/certs
+            - name: shared-keystore
+              mountPath: /keystore
+      volumes:
+        - name: jenkins-data
+          persistentVolumeClaim:
+            claimName: jenkins-pv-claim
+        - name: kommander-ca
+          secret:
+            secretName: kommander-ca
+        - name: kommander-ca-store
+          emptyDir: {}
+        - name: shared-keystore
+          emptyDir: {}
