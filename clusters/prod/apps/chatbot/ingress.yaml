@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: chatbot
+  annotations:
+    cert-manager.io/cluster-issuer: "kommander-ca"
+    traefik.ingress.kubernetes.io/router.tls: "true"
+  namespace: smart-ai
+  labels:
+    app: chatbot
+    component: service
+    tier: backend
+
+spec:
+  tls:
+    - hosts:
+        - chatbot.app.local
+      secretName: chatbot-tls
+  rules:
+    - host: chatbot.app.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: chatbot-service
+                port:
+                  number: 80

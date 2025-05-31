@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: smart-ai
+  labels:
+    app: smart-ai
+    component: service
+    tier: backend
+  annotations:
+    fluxcd.io/managed-by: "flux"
+    fluxcd.io/namespace: "smart-ai"
