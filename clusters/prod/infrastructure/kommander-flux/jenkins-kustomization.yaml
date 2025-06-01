@@ -14,3 +14,6 @@ spec:
   sourceRef:
     kind: GitRepository
     name: fluxcd
+  install:
+    createNamespace: true
+  targetNamespace: jenkins
