@@ -1,0 +1,55 @@
+pipeline {
+  agent { label 'jenkinsnode' }
+  environment {
+    IMAGE_NAME = "goharbor.app.local/library/smart-ai"
+    IMAGE_TAG = "${BUILD_ID}"
+    // Add Harbor registry URL without protocol
+    HARBOR_REGISTRY = "goharbor.app.local"
+    KUSTOMIZE_DIR = "./deploy/k8s"
+  }
+  stages {
+    stage('Login to Harbor') {
+      steps {
+        withCredentials([usernamePassword(
+          credentialsId: 'harbor-creds',
+          usernameVariable: 'HARBOR_USER',
+          passwordVariable: 'HARBOR_PASS'
+        )]) {
+          sh '''
+            docker login ${HARBOR_REGISTRY} -u ${HARBOR_USER} -p ${HARBOR_PASS}
+          '''
+        }
+      }
+    }
+    stage('Build') {
+      steps {
+        sh 'docker build -t ${IMAGE_NAME}:${IMAGE_TAG} .'
+      }
+    }
+    stage('Push') {
+      steps {
+        sh 'docker push ${IMAGE_NAME}:${IMAGE_TAG}'
+      }
+    }
+    stage('Test') {
+      steps {
+        echo "Run tests" 
+      }
+    }
+    stage('Deploy with Kustomize') {
+      steps {
+        sh """
+          sed -e "s|IMAGE_NAME_PLACEHOLDER|${IMAGE_NAME}|g" -e "s|IMAGE_TAG_PLACEHOLDER|${IMAGE_TAG}|g" -i ${KUSTOMIZE_DIR}/overlays/prod/kustomization.yaml
+          kubectl apply -k ${KUSTOMIZE_DIR}/overlays/prod/
+        """
+      }
+    }
+  }
+  post {
+    always {
+      sh 'docker logout ${HARBOR_REGISTRY}'
+    }
+  }
+}
+
+

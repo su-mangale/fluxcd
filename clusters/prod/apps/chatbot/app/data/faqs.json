@@ -1,0 +1,504 @@
+{
+    "faqs": [
+        {
+            "question": "Can you describe the role of a pod in Kubernetes?",
+            "answer": "The role of a pod in Kubernetes is to the smallest deployable unit that can run a container.",
+            "keywords": [
+                "pod",
+                "container",
+                "workload",
+                "deployment"
+            ]
+        },
+        {
+            "question": "What function does a deployment serve in Kubernetes?",
+            "answer": "A deployment functions to manage the desired state and rollout of pods in Kubernetes.",
+            "keywords": [
+                "deployment",
+                "update",
+                "rollout",
+                "replica"
+            ]
+        },
+        {
+            "question": "What function does a service serve in Kubernetes?",
+            "answer": "A service functions to enable communication between different components in a cluster in Kubernetes.",
+            "keywords": [
+                "service",
+                "networking",
+                "cluster IP",
+                "load balancer"
+            ]
+        },
+        {
+            "question": "How does Kubernetes use clusters?",
+            "answer": "Kubernetes uses clusters to a set of nodes that run containerized applications.",
+            "keywords": [
+                "cluster",
+                "control plane",
+                "node",
+                "infrastructure"
+            ]
+        },
+        {
+            "question": "Why are deployments important in Kubernetes?",
+            "answer": "Deployments are important because they manage the desired state and rollout of pods.",
+            "keywords": [
+                "deployment",
+                "update",
+                "rollout",
+                "replica"
+            ]
+        },
+        {
+            "question": "Why are kubelets important in Kubernetes?",
+            "answer": "Kubelets are important because they an agent that runs on each node and manages pods.",
+            "keywords": [
+                "kubelet",
+                "agent",
+                "node",
+                "pod management"
+            ]
+        },
+        {
+            "question": "Why are configmaps important in Kubernetes?",
+            "answer": "Configmaps are important because they store non-confidential configuration data as key-value pairs.",
+            "keywords": [
+                "configmap",
+                "configuration",
+                "env",
+                "settings"
+            ]
+        },
+        {
+            "question": "How does Kubernetes use deployments?",
+            "answer": "Kubernetes uses deployments to manage the desired state and rollout of pods.",
+            "keywords": [
+                "deployment",
+                "update",
+                "rollout",
+                "replica"
+            ]
+        },
+        {
+            "question": "How does Kubernetes use secrets?",
+            "answer": "Kubernetes uses secrets to store sensitive data like passwords or tokens.",
+            "keywords": [
+                "secret",
+                "encryption",
+                "password",
+                "credentials"
+            ]
+        },
+        {
+            "question": "How does Kubernetes use ingresss?",
+            "answer": "Kubernetes uses ingresss to manage external access to services in a cluster.",
+            "keywords": [
+                "ingress",
+                "routing",
+                "http",
+                "path"
+            ]
+        },
+        {
+            "question": "What is a configmap in Kubernetes?",
+            "answer": "A configmap in Kubernetes is store non-confidential configuration data as key-value pairs.",
+            "keywords": [
+                "configmap",
+                "configuration",
+                "env",
+                "settings"
+            ]
+        },
+        {
+            "question": "What is a deployment in Kubernetes?",
+            "answer": "A deployment in Kubernetes is manage the desired state and rollout of pods.",
+            "keywords": [
+                "deployment",
+                "update",
+                "rollout",
+                "replica"
+            ]
+        },
+        {
+            "question": "What function does a kubelet serve in Kubernetes?",
+            "answer": "A kubelet functions to an agent that runs on each node and manages pods in Kubernetes.",
+            "keywords": [
+                "kubelet",
+                "agent",
+                "node",
+                "pod management"
+            ]
+        },
+        {
+            "question": "What function does a configmap serve in Kubernetes?",
+            "answer": "A configmap functions to store non-confidential configuration data as key-value pairs in Kubernetes.",
+            "keywords": [
+                "configmap",
+                "configuration",
+                "env",
+                "settings"
+            ]
+        },
+        {
+            "question": "What is a service in Kubernetes?",
+            "answer": "A service in Kubernetes is enable communication between different components in a cluster.",
+            "keywords": [
+                "service",
+                "networking",
+                "cluster IP",
+                "load balancer"
+            ]
+        },
+        {
+            "question": "What function does a node serve in Kubernetes?",
+            "answer": "A node functions to a worker machine in Kubernetes in Kubernetes.",
+            "keywords": [
+                "node",
+                "worker",
+                "machine",
+                "compute"
+            ]
+        },
+        {
+            "question": "Why are services important in Kubernetes?",
+            "answer": "Services are important because they enable communication between different components in a cluster.",
+            "keywords": [
+                "service",
+                "networking",
+                "cluster IP",
+                "load balancer"
+            ]
+        },
+        {
+            "question": "Can you describe the role of a kubelet in Kubernetes?",
+            "answer": "The role of a kubelet in Kubernetes is to an agent that runs on each node and manages pods.",
+            "keywords": [
+                "kubelet",
+                "agent",
+                "node",
+                "pod management"
+            ]
+        },
+        {
+            "question": "Can you describe the role of a secret in Kubernetes?",
+            "answer": "The role of a secret in Kubernetes is to store sensitive data like passwords or tokens.",
+            "keywords": [
+                "secret",
+                "encryption",
+                "password",
+                "credentials"
+            ]
+        },
+        {
+            "question": "Can you describe the role of a cluster in Kubernetes?",
+            "answer": "The role of a cluster in Kubernetes is to a set of nodes that run containerized applications.",
+            "keywords": [
+                "cluster",
+                "control plane",
+                "node",
+                "infrastructure"
+            ]
+        },
+        {
+            "question": "Can you describe the role of a service in Kubernetes?",
+            "answer": "The role of a service in Kubernetes is to enable communication between different components in a cluster.",
+            "keywords": [
+                "service",
+                "networking",
+                "cluster IP",
+                "load balancer"
+            ]
+        },
+        {
+            "question": "What is a secret in Kubernetes?",
+            "answer": "A secret in Kubernetes is store sensitive data like passwords or tokens.",
+            "keywords": [
+                "secret",
+                "encryption",
+                "password",
+                "credentials"
+            ]
+        },
+        {
+            "question": "How does Kubernetes use nodes?",
+            "answer": "Kubernetes uses nodes to a worker machine in Kubernetes.",
+            "keywords": [
+                "node",
+                "worker",
+                "machine",
+                "compute"
+            ]
+        },
+        {
+            "question": "What function does a secret serve in Kubernetes?",
+            "answer": "A secret functions to store sensitive data like passwords or tokens in Kubernetes.",
+            "keywords": [
+                "secret",
+                "encryption",
+                "password",
+                "credentials"
+            ]
+        },
+        {
+            "question": "Can you describe the role of a ingress in Kubernetes?",
+            "answer": "The role of a ingress in Kubernetes is to manage external access to services in a cluster.",
+            "keywords": [
+                "ingress",
+                "routing",
+                "http",
+                "path"
+            ]
+        },
+        {
+            "question": "What function does a cluster serve in Kubernetes?",
+            "answer": "A cluster functions to a set of nodes that run containerized applications in Kubernetes.",
+            "keywords": [
+                "cluster",
+                "control plane",
+                "node",
+                "infrastructure"
+            ]
+        },
+        {
+            "question": "What is a node in Kubernetes?",
+            "answer": "A node in Kubernetes is a worker machine in Kubernetes.",
+            "keywords": [
+                "node",
+                "worker",
+                "machine",
+                "compute"
+            ]
+        },
+        {
+            "question": "What function does a namespace serve in Kubernetes?",
+            "answer": "A namespace functions to divide cluster resources between multiple users in Kubernetes.",
+            "keywords": [
+                "namespace",
+                "isolation",
+                "resource",
+                "multi-tenancy"
+            ]
+        },
+        {
+            "question": "Can you describe the role of a node in Kubernetes?",
+            "answer": "The role of a node in Kubernetes is to a worker machine in Kubernetes.",
+            "keywords": [
+                "node",
+                "worker",
+                "machine",
+                "compute"
+            ]
+        },
+        {
+            "question": "How does Kubernetes use namespaces?",
+            "answer": "Kubernetes uses namespaces to divide cluster resources between multiple users.",
+            "keywords": [
+                "namespace",
+                "isolation",
+                "resource",
+                "multi-tenancy"
+            ]
+        },
+        {
+            "question": "Can you describe the role of a namespace in Kubernetes?",
+            "answer": "The role of a namespace in Kubernetes is to divide cluster resources between multiple users.",
+            "keywords": [
+                "namespace",
+                "isolation",
+                "resource",
+                "multi-tenancy"
+            ]
+        },
+        {
+            "question": "How does Kubernetes use pods?",
+            "answer": "Kubernetes uses pods to the smallest deployable unit that can run a container.",
+            "keywords": [
+                "pod",
+                "container",
+                "workload",
+                "deployment"
+            ]
+        },
+        {
+            "question": "Why are secrets important in Kubernetes?",
+            "answer": "Secrets are important because they store sensitive data like passwords or tokens.",
+            "keywords": [
+                "secret",
+                "encryption",
+                "password",
+                "credentials"
+            ]
+        },
+        {
+            "question": "Why are pods important in Kubernetes?",
+            "answer": "Pods are important because they the smallest deployable unit that can run a container.",
+            "keywords": [
+                "pod",
+                "container",
+                "workload",
+                "deployment"
+            ]
+        },
+        {
+            "question": "What function does a ingress serve in Kubernetes?",
+            "answer": "A ingress functions to manage external access to services in a cluster in Kubernetes.",
+            "keywords": [
+                "ingress",
+                "routing",
+                "http",
+                "path"
+            ]
+        },
+        {
+            "question": "How does Kubernetes use configmaps?",
+            "answer": "Kubernetes uses configmaps to store non-confidential configuration data as key-value pairs.",
+            "keywords": [
+                "configmap",
+                "configuration",
+                "env",
+                "settings"
+            ]
+        },
+        {
+            "question": "Why are ingresss important in Kubernetes?",
+            "answer": "Ingresss are important because they manage external access to services in a cluster.",
+            "keywords": [
+                "ingress",
+                "routing",
+                "http",
+                "path"
+            ]
+        },
+        {
+            "question": "What is a pod in Kubernetes?",
+            "answer": "A pod in Kubernetes is the smallest deployable unit that can run a container.",
+            "keywords": [
+                "pod",
+                "container",
+                "workload",
+                "deployment"
+            ]
+        },
+        {
+            "question": "What function does a pod serve in Kubernetes?",
+            "answer": "A pod functions to the smallest deployable unit that can run a container in Kubernetes.",
+            "keywords": [
+                "pod",
+                "container",
+                "workload",
+                "deployment"
+            ]
+        },
+        {
+            "question": "Can you describe the role of a deployment in Kubernetes?",
+            "answer": "The role of a deployment in Kubernetes is to manage the desired state and rollout of pods.",
+            "keywords": [
+                "deployment",
+                "update",
+                "rollout",
+                "replica"
+            ]
+        },
+        {
+            "question": "How does Kubernetes use kubelets?",
+            "answer": "Kubernetes uses kubelets to an agent that runs on each node and manages pods.",
+            "keywords": [
+                "kubelet",
+                "agent",
+                "node",
+                "pod management"
+            ]
+        },
+        {
+            "question": "What is a namespace in Kubernetes?",
+            "answer": "A namespace in Kubernetes is divide cluster resources between multiple users.",
+            "keywords": [
+                "namespace",
+                "isolation",
+                "resource",
+                "multi-tenancy"
+            ]
+        },
+        {
+            "question": "Why are nodes important in Kubernetes?",
+            "answer": "Nodes are important because they a worker machine in Kubernetes.",
+            "keywords": [
+                "node",
+                "worker",
+                "machine",
+                "compute"
+            ]
+        },
+        {
+            "question": "What is a kubelet in Kubernetes?",
+            "answer": "A kubelet in Kubernetes is an agent that runs on each node and manages pods.",
+            "keywords": [
+                "kubelet",
+                "agent",
+                "node",
+                "pod management"
+            ]
+        },
+        {
+            "question": "What is a ingress in Kubernetes?",
+            "answer": "A ingress in Kubernetes is manage external access to services in a cluster.",
+            "keywords": [
+                "ingress",
+                "routing",
+                "http",
+                "path"
+            ]
+        },
+        {
+            "question": "Can you describe the role of a configmap in Kubernetes?",
+            "answer": "The role of a configmap in Kubernetes is to store non-confidential configuration data as key-value pairs.",
+            "keywords": [
+                "configmap",
+                "configuration",
+                "env",
+                "settings"
+            ]
+        },
+        {
+            "question": "What is a cluster in Kubernetes?",
+            "answer": "A cluster in Kubernetes is a set of nodes that run containerized applications.",
+            "keywords": [
+                "cluster",
+                "control plane",
+                "node",
+                "infrastructure"
+            ]
+        },
+        {
+            "question": "Why are clusters important in Kubernetes?",
+            "answer": "Clusters are important because they a set of nodes that run containerized applications.",
+            "keywords": [
+                "cluster",
+                "control plane",
+                "node",
+                "infrastructure"
+            ]
+        },
+        {
+            "question": "How does Kubernetes use services?",
+            "answer": "Kubernetes uses services to enable communication between different components in a cluster.",
+            "keywords": [
+                "service",
+                "networking",
+                "cluster IP",
+                "load balancer"
+            ]
+        },
+        {
+            "question": "Why are namespaces important in Kubernetes?",
+            "answer": "Namespaces are important because they divide cluster resources between multiple users.",
+            "keywords": [
+                "namespace",
+                "isolation",
+                "resource",
+                "multi-tenancy"
+            ]
+        }
+    ]
+}
