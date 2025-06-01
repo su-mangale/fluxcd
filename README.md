@@ -1,5 +1,3 @@
-# fluxcd
-
 # FluxCD GitRepository Source Setup
 
 This guide explains how to add this repository as a Git source in FluxCD on your Kubernetes cluster.
