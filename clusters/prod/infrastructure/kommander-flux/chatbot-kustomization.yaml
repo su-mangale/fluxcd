@@ -6,7 +6,7 @@ metadata:
   namespace: kommander-flux
 spec:
   interval: 1m0s
-  path: ./clusters/prod/apps/chatbot
+  path: ./clusters/prod/apps/chatbot/manifests
   prune: true
   sourceRef:
     kind: GitRepository

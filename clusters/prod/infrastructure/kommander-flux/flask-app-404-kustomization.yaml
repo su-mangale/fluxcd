@@ -6,7 +6,7 @@ metadata:
 spec:
   force: false
   interval: 1m0s
-  path: ./clusters/prod/apps/flask_404_app
+  path: ./clusters/prod/apps/flask_404_app/manifests
   prune: true
   sourceRef:
     kind: GitRepository
