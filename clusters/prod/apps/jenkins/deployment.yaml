@@ -67,8 +67,6 @@ spec:
               memory: "500Mi"
               cpu: "500m"
           env:
-            - name: JENKINS_OPTS
-              value: "--prefix=/dkp/kommander/jenkins"
             - name: JAVA_OPTS
               value: "-Djavax.net.ssl.trustStore=$JAVA_HOME/lib/security/cacerts -Djavax.net.ssl.trustStorePassword=changeit"
           ports:
@@ -78,7 +76,7 @@ spec:
               containerPort: 50000
           livenessProbe:
             httpGet:
-              path: "/dkp/kommander/jenkins/login"
+              path: "/login"
               port: 8080
             initialDelaySeconds: 90
             periodSeconds: 10
@@ -86,7 +84,7 @@ spec:
             failureThreshold: 5
           readinessProbe:
             httpGet:
-              path: "/dkp/kommander/jenkins/login"
+              path: "/login"
               port: 8080
             initialDelaySeconds: 60
             periodSeconds: 10

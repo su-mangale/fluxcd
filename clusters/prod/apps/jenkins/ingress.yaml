@@ -15,7 +15,7 @@ spec:
     - host: jenkins.app.local
       http:
         paths:
-          - path: /dkp/kommander/jenkins
+          - path: /
             pathType: Prefix
             backend:
               service:
