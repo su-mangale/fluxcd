@@ -5,5 +5,5 @@ metadata:
   name: smart-ai
   namespace: kommander-flux
 spec:
-  image: 2058615mangal/smart-ai
+  image: mangale/smart-ai
   interval: 30s
