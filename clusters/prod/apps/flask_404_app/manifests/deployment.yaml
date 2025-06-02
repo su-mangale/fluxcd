@@ -24,7 +24,7 @@ spec:
         fsGroup: 2000
       containers:
         - name: flask-404
-          image: docker.io/2058615mangal/flask_404_app:v1.0
+          image: docker.io/mangale/flask_404_app:v1.0
           ports:
             - containerPort: 5000
           securityContext:

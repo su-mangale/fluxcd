@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: chatbot
-          image: docker.io/2058615mangal/smart-ai:v1.0
+          image: docker.io/mangale/smart-ai:v1.0
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 5000
