@@ -15,5 +15,9 @@ spec:
     app: jenkins-server
   type: ClusterIP
   ports:
-    - port: 8080
+    - name: httpport
+      port: 8080
       targetPort: 8080
+    - name: jnlpport
+      port: 50000
+      targetPort: 50000
