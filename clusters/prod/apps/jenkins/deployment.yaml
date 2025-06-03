@@ -19,7 +19,7 @@ spec:
       serviceAccountName: jenkins-admin
       initContainers:
         - name: install-ca-cert
-          image: jenkins/jenkins:lts-jdk17
+          image: jenkins/jenkins:lts-jdk21
           command: ["bash", "-c"]
           args:
             - |
