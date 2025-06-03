@@ -25,6 +25,8 @@ spec:
         - name: chatbot
           image: docker.io/mangale/smart-ai:v1.0 # {"$imagepolicy": "kommander-flux:smart-ai"}
           imagePullPolicy: IfNotPresent
+          imagePullSecrets:
+            - name: docker.io
           ports:
             - containerPort: 5000
           resources:
