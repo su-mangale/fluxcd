@@ -19,6 +19,7 @@ pipeline {
                     sh '''
                         git init
                         git config --global --add safe.directory `pwd`
+                        git remote remove origin || true
                         git remote add origin ${REPO_URL}
                         git sparse-checkout init --cone
                         git sparse-checkout set ${SPARSE_PATH}
