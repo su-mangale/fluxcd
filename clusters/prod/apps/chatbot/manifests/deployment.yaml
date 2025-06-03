@@ -1,4 +1,3 @@
----
 # Chatbot Deployment Manifest
 apiVersion: apps/v1
 kind: Deployment
@@ -23,7 +22,7 @@ spec:
     spec:
       containers:
         - name: chatbot
-          image: docker.io/mangale/smart-ai:v1.0 # {"$imagepolicy": "kommander-flux:smart-ai"}
+          image: mangale/smart-ai:2.4.29 # {"$imagepolicy": "kommander-flux:smart-ai"}
           imagePullPolicy: IfNotPresent
           imagePullSecrets:
             - name: docker.io
