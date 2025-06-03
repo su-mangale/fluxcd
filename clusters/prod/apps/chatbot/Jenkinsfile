@@ -57,7 +57,7 @@ pipeline {
                 container('docker') {
                     dir("${env.SPARSE_PATH}") {
                         sh '''
-                            docker build -t docker.io/smart-ai:${IMAGE_TAG} .
+                            docker build -t docker.io/mangale/smart-ai:${IMAGE_TAG} .
                         '''
                     }
                 }
