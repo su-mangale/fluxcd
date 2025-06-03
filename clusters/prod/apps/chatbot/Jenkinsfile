@@ -47,6 +47,7 @@ pipeline {
                         sh 'git config --global --add safe.directory `pwd`'
                         def shortCommit = sh(script: "git rev-parse --short HEAD", returnStdout: true).trim()
                         env.IMAGE_TAG = shortCommit
+                        echo "Using image tag: ${env.IMAGE_TAG}"  // Added for debugging
                     }
                 }
             }
@@ -57,6 +58,7 @@ pipeline {
                 container('docker') {
                     dir("${env.SPARSE_PATH}") {
                         sh '''
+                            echo "Building image with tag: docker.io/mangale/smart-ai:${IMAGE_TAG}"  // Debug
                             docker build -t docker.io/mangale/smart-ai:${IMAGE_TAG} .
                         '''
                     }
@@ -78,4 +80,22 @@ pipeline {
             }
         }
     }
+    post {
+        always {
+          container('docker') {
+                sh '''
+                    docker logout
+                '''
+            }
+            echo "Cleaning up workspace."
+            cleanWs()
+        }
+        success {
+            echo "Pipeline completed successfully."
+        }
+        failure {
+            echo "Pipeline failed."
+        }
+    }
 }
+
