@@ -1,55 +1,57 @@
+properties([
+  pipelineTriggers([
+    pollSCM('H/2 * * * *')  // Poll every 2 mins
+  ])
+])
+
 pipeline {
-  agent { label 'jenkinsnode' }
-  environment {
-    IMAGE_NAME = "goharbor.app.local/library/smart-ai"
-    IMAGE_TAG = "${BUILD_ID}"
-    // Add Harbor registry URL without protocol
-    HARBOR_REGISTRY = "goharbor.app.local"
-    KUSTOMIZE_DIR = "./deploy/k8s"
+  agent {
+    kubernetes {
+      yamlFile 'clusters/prod/apps/chatbot/docker-agent.yaml'
+      defaultContainer 'docker'
+    }
   }
+
+  environment {
+    IMAGE_NAME = "docker.io/mangale/smart-ai"
+  }
+
   stages {
-    stage('Login to Harbor') {
+    stage('Checkout') {
       steps {
-        withCredentials([usernamePassword(
-          credentialsId: 'harbor-creds',
-          usernameVariable: 'HARBOR_USER',
-          passwordVariable: 'HARBOR_PASS'
-        )]) {
-          sh '''
-            docker login ${HARBOR_REGISTRY} -u ${HARBOR_USER} -p ${HARBOR_PASS}
-          '''
+        git branch: 'main', url: 'https://github.com/LinuxNerdBTW/fluxcd.git'
+      }
+    }
+
+    stage('Set Tag') {
+      steps {
+        script {
+          def commitId = sh(script: "git rev-parse --short HEAD", returnStdout: true).trim()
+          env.TAG = commitId
+          echo "Using image tag: ${TAG} and latest"
         }
       }
     }
-    stage('Build') {
-      steps {
-        sh 'docker build -t ${IMAGE_NAME}:${IMAGE_TAG} .'
-      }
-    }
-    stage('Push') {
-      steps {
-        sh 'docker push ${IMAGE_NAME}:${IMAGE_TAG}'
-      }
-    }
-    stage('Test') {
-      steps {
-        echo "Run tests" 
-      }
-    }
-    stage('Deploy with Kustomize') {
+
+    stage('Build Docker Image') {
       steps {
         sh """
-          sed -e "s|IMAGE_NAME_PLACEHOLDER|${IMAGE_NAME}|g" -e "s|IMAGE_TAG_PLACEHOLDER|${IMAGE_TAG}|g" -i ${KUSTOMIZE_DIR}/overlays/prod/kustomization.yaml
-          kubectl apply -k ${KUSTOMIZE_DIR}/overlays/prod/
+          cd clusters/prod/apps/chatbot
+          docker build -t ${IMAGE_NAME}:${TAG} -t ${IMAGE_NAME}:latest .
         """
       }
     }
-  }
-  post {
-    always {
-      sh 'docker logout ${HARBOR_REGISTRY}'
+
+    stage('Push Docker Image') {
+      steps {
+        withCredentials([usernamePassword(credentialsId: 'docker.io', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+          sh """
+            echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+            docker push ${IMAGE_NAME}:${TAG}
+            docker push ${IMAGE_NAME}:latest
+          """
+        }
+      }
     }
   }
 }
-
-
