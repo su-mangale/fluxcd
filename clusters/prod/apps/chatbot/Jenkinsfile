@@ -9,7 +9,7 @@ pipeline {
     environment {
         REPO_URL = 'https://github.com/LinuxNerdBTW/fluxcd.git'
         SPARSE_PATH = 'clusters/prod/apps/chatbot'
-        IMAGE_TAG = "build-${BUILD_ID}"
+        IMAGE_TAG = "2.4.${BUILD_ID}"
         DOCKER_REGISTRY = 'docker.io'
         DOCKER_IMAGE = 'mangale/smart-ai'
         DOCKER_IMAGE_FULL = "${DOCKER_REGISTRY}/${DOCKER_IMAGE}:${IMAGE_TAG}"
