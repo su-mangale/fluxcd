@@ -11,7 +11,17 @@ pipeline {
         SPARSE_PATH = 'clusters/prod/apps/chatbot'
         IMAGE_TAG = ''
     }
-
+    stage('Prepare Workspace') {
+        steps {
+            container('jnlp') {
+                sh '''
+                    mkdir -p /home/jenkins/agent/workspace
+                    chmod -R 777 /home/jenkins/agent/workspace
+                '''
+            }
+        }
+    }
+    
     stages {
         stage('Sparse Checkout') {
             steps {
