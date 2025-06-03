@@ -20,6 +20,7 @@ spec:
       initContainers:
         - name: install-ca-cert
           image: jenkins/jenkins:lts-jdk21
+          imagePullPolicy: IfNotPresent
           command: ["bash", "-c"]
           args:
             - |
@@ -58,7 +59,8 @@ spec:
             runAsUser: 0
       containers:
         - name: jenkins
-          image: jenkins/jenkins:lts-jdk17
+          image: jenkins/jenkins:lts-jdk21
+          imagePullPolicy: IfNotPresent
           resources:
             limits:
               memory: "2Gi"
@@ -97,6 +99,8 @@ spec:
               mountPath: /etc/ssl/certs
             - name: shared-keystore
               mountPath: /keystore
+      imagePullSecrets:
+        - name: docker.io
       volumes:
         - name: jenkins-data
           persistentVolumeClaim:
