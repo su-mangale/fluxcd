@@ -5,6 +5,8 @@ metadata:
   name: fluxcd
   namespace: kommander-flux
 spec:
+  secretRef:
+    name: github-pat
   interval: 1m0s
   ref:
     branch: main
