@@ -1,0 +1,12 @@
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: smart-ai
+  namespace: kommander-flux
+spec:
+  imageRepositoryRef:
+    name: smart-ai
+  policy:
+    numerical:
+      order: asc
