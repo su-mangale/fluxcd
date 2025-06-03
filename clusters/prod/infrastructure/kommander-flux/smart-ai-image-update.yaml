@@ -9,11 +9,13 @@ spec:
     checkout:
       ref:
         branch: main
+      secretRef:
+        name: github-pat
     commit:
       author:
         email: lopchanmangal5@gmail.com
         name: LinuxNerdBTW
-      messageTemplate: '{{range .Updated.Images}}{{println .}}{{end}}'
+      messageTemplate: "{{range .Updated.Images}}{{println .}}{{end}}"
   interval: 1m0s
   sourceRef:
     kind: GitRepository
