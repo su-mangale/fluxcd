@@ -8,5 +8,5 @@ spec:
   imageRepositoryRef:
     name: smart-ai
   policy:
-    numerical:
-      order: asc
+    semver:
+      range: 2.4.x
