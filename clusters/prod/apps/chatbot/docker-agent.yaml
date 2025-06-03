@@ -10,6 +10,9 @@ spec:
   containers:
     - name: docker
       image: docker:24.0.5-dind
+      command: ["/bin/sh", "-c"]
+      args:
+        - apk add --no-cache git && dockerd-entrypoint.sh
       securityContext:
         privileged: true
       volumeMounts:
