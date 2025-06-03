@@ -20,12 +20,12 @@ spec:
         component: service
         tier: backend
     spec:
+      imagePullSecrets:
+        - name: docker.io
       containers:
         - name: chatbot
           image: mangale/smart-ai:2.4.29 # {"$imagepolicy": "kommander-flux:smart-ai"}
           imagePullPolicy: IfNotPresent
-          imagePullSecrets:
-            - name: docker.io
           ports:
             - containerPort: 5000
           resources:
