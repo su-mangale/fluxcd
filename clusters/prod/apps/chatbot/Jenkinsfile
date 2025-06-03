@@ -1,57 +1,69 @@
-properties([
-  pipelineTriggers([
-    pollSCM('H/2 * * * *')  // Poll every 2 mins
-  ])
-])
-
 pipeline {
-  agent {
-    kubernetes {
-      yamlFile 'clusters/prod/apps/chatbot/docker-agent.yaml'
-      defaultContainer 'docker'
-    }
-  }
-
-  environment {
-    IMAGE_NAME = "docker.io/mangale/smart-ai"
-  }
-
-  stages {
-    stage('Checkout') {
-      steps {
-        git branch: 'main', url: 'https://github.com/LinuxNerdBTW/fluxcd.git'
-      }
-    }
-
-    stage('Set Tag') {
-      steps {
-        script {
-          def commitId = sh(script: "git rev-parse --short HEAD", returnStdout: true).trim()
-          env.TAG = commitId
-          echo "Using image tag: ${TAG} and latest"
+    agent {
+        kubernetes {
+            yamlFile 'clusters/prod/apps/chatbot/docker-agent.yaml'
+            defaultContainer 'docker'
         }
-      }
     }
 
-    stage('Build Docker Image') {
-      steps {
-        sh """
-          cd clusters/prod/apps/chatbot
-          docker build -t ${IMAGE_NAME}:${TAG} -t ${IMAGE_NAME}:latest .
-        """
-      }
+    environment {
+        REPO_URL = 'https://github.com/LinuxNerdBTW/fluxcd.git'
+        SPARSE_PATH = 'clusters/prod/apps/chatbot'
+        IMAGE_TAG = ''
     }
 
-    stage('Push Docker Image') {
-      steps {
-        withCredentials([usernamePassword(credentialsId: 'docker.io', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
-          sh """
-            echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
-            docker push ${IMAGE_NAME}:${TAG}
-            docker push ${IMAGE_NAME}:latest
-          """
+    stages {
+        stage('Sparse Checkout') {
+            steps {
+                container('docker') {
+                    sh '''
+                        git init
+                        git config --global --add safe.directory `pwd`
+                        git remote add origin ${REPO_URL}
+                        git sparse-checkout init --cone
+                        git sparse-checkout set ${SPARSE_PATH}
+                        git pull origin main
+                    '''
+                }
+            }
         }
-      }
+
+        stage('Set Tag') {
+            steps {
+                container('docker') {
+                    script {
+                        sh 'git config --global --add safe.directory `pwd`' // Safe dir again, just in case
+                        def shortCommit = sh(script: "git rev-parse --short HEAD", returnStdout: true).trim()
+                        env.IMAGE_TAG = shortCommit
+                    }
+                }
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                container('docker') {
+                    dir("${env.SPARSE_PATH}") {
+                        sh '''
+                            docker build -t docker.io/smart-ai:${IMAGE_TAG} .
+                        '''
+                    }
+                }
+            }
+        }
+
+        stage('Push Docker Image') {
+            steps {
+                container('docker') {
+                    withCredentials([usernamePassword(credentialsId: 'docker.io', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+                        sh '''
+                            echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+                            docker tag docker.io/smart-ai:${IMAGE_TAG} docker.io/$DOCKER_USER/smart-ai:${IMAGE_TAG}
+                            docker push docker.io/$DOCKER_USER/smart-ai:${IMAGE_TAG}
+                        '''
+                    }
+                }
+            }
+        }
     }
-  }
 }
