@@ -3,8 +3,11 @@ kind: Pod
 metadata:
   namespace: jenkins
   labels:
-    some-label: docker-builder
+    app: jenkins-agent
 spec:
+  securityContext:
+    runAsUser: 1000
+    fsGroup: 1000
   imagePullSecrets:
     - name: docker.io
   containers:
@@ -18,8 +21,15 @@ spec:
       volumeMounts:
         - name: docker-graph-storage
           mountPath: /var/lib/docker
+        - name: workspace-volume
+          mountPath: /home/jenkins/agent
     - name: jnlp
       image: jenkins/inbound-agent:latest
+      volumeMounts:
+        - name: workspace-volume
+          mountPath: /home/jenkins/agent
   volumes:
     - name: docker-graph-storage
+      emptyDir: {}
+    - name: workspace-volume
       emptyDir: {}
