@@ -7,7 +7,7 @@ pipeline {
     }
 
     environment {
-        REPO_URL = 'https://github.com/LinuxNerdBTW/fluxcd.git'
+        REPO_URL = 'https://github.com/su-mangale/fluxcd.git'
         SPARSE_PATH = 'clusters/prod/apps/chatbot'
         IMAGE_TAG = "2.4.${BUILD_ID}"
         DOCKER_REGISTRY = 'docker.io'

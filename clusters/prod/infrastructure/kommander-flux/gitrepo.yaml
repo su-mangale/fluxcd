@@ -10,4 +10,4 @@ spec:
   interval: 1m0s
   ref:
     branch: main
-  url: https://github.com/LinuxNerdBTW/fluxcd.git
+  url: https://github.com/su-mangale/fluxcd.git
