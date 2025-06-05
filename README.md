@@ -1,6 +1,6 @@
 # FluxCD GitOps Repository
 
-This repository implements a scalable, multi-environment GitOps workflow using FluxCD. It is organized for production-grade Kubernetes platform and application management, supporting overlays for production and staging, and grouping resources by application and infrastructure component.
+This repository implements a scalable, production-ready GitOps workflow using FluxCD. It is organized for Kubernetes platform and application management, supporting overlays for production, and grouping resources by application and infrastructure component.
 
 ## Repository Structure
 
@@ -8,15 +8,12 @@ This repository implements a scalable, multi-environment GitOps workflow using F
 repo-root/
 ├── apps/
 │   ├── base/           # Base manifests for each application (HelmRelease, Kustomization, etc.)
-│   ├── production/     # Production overlays (patches, env-specific config)
-│   └── staging/        # Staging overlays
+│   └── production/     # Production overlays (patches, env-specific config)
 ├── infrastructure/
 │   ├── base/           # Base manifests for infra components (ingress, sources, etc.)
-│   ├── production/     # Production overlays (patches, env-specific config)
-│   └── staging/        # Staging overlays
+│   └── production/     # Production overlays (patches, env-specific config)
 ├── clusters/
-│   ├── production/     # Kustomization for production cluster (references overlays)
-│   └── staging/        # Kustomization for staging cluster
+│   └── production/     # Kustomization for production cluster (references overlays)
 ├── helm/               # Helm charts for custom or third-party apps
 └── README.md           # This file
 ```
@@ -64,12 +61,10 @@ EOF
 ```
 
 ### 4. Deploy Cluster Kustomizations
-Apply the Kustomization for your environment (production or staging):
+Apply the Kustomization for your environment (production):
 
 ```bash
 kubectl apply -k clusters/production
-# or for staging
-kubectl apply -k clusters/staging
 ```
 
 ### 5. Verify FluxCD Sync
@@ -84,8 +79,8 @@ kubectl get helmreleases -A
 
 ## Notes
 - All application and infrastructure manifests are grouped by component under `apps/base/` and `infrastructure/base/`.
-- Overlays for production and staging allow for environment-specific configuration and patches.
-- Only Kustomization manifests should exist in `clusters/production` and `clusters/staging`.
+- Overlays for production allow for environment-specific configuration and patches.
+- Only Kustomization manifests should exist in `clusters/production`.
 - Secrets (e.g., GitHub PAT) should be managed securely and never committed to the repo.
 
 For more details, see the comments in each directory and manifest.
