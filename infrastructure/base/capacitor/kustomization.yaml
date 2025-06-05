@@ -1,2 +1,3 @@
 resources:
   - kustomization-flux.yaml
+  - ocirepo.yaml
