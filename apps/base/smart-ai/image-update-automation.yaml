@@ -1,0 +1,22 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageUpdateAutomation
+metadata:
+  name: smart-ai
+  namespace: flux-system
+spec:
+  git:
+    checkout:
+      ref:
+        branch: main
+    commit:
+      author:
+        email: lopchanmangal5@gmail.com
+        name: LinuxNerdBTW
+      messageTemplate: "{{range .Updated.Images}}{{println .}}{{end}}"
+  interval: 1m0s
+  sourceRef:
+    kind: GitRepository
+    name: fluxcd
+  update:
+    path: ../../base/smart-ai/
+    strategy: Setters

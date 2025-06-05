@@ -1,0 +1,13 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: nginx-ingress-controller
+  namespace: ingress-nginx
+spec:
+  values:
+    controller:
+      replicaCount: 3
+      service:
+        type: LoadBalancer
+        annotations:
+          service.beta.kubernetes.io/aws-load-balancer-type: nlb

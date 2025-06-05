@@ -1,0 +1,9 @@
+resources:
+  - ../../base
+patches:
+  - target:
+      kind: HelmRelease
+      name: nginx-ingress-controller
+      namespace: ingress-nginx
+    path: nginx-ingress-patch.yaml
+
