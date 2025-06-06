@@ -1,3 +1,4 @@
 resources:
   - kustomization-flux.yaml
   - ocirepo.yaml
+  - ingress.yaml
