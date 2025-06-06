@@ -3,5 +3,3 @@ resources:
   - ../base/jenkins
   - ../base/smart-ai
   - ../base/gitea
-  - ../base/goharbor
-  - ../base/grafana-loki
