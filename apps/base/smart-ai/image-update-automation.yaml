@@ -18,5 +18,5 @@ spec:
     kind: GitRepository
     name: fluxcd
   update:
-    path: ../../base/smart-ai/
+    path: ./
     strategy: Setters
