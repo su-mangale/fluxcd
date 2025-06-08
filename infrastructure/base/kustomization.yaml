@@ -1,3 +1,5 @@
 resources:
   - nginx-ingress/
   - capacitor/
+  - image-reflector-controller/
+  - image-automation-controller/
