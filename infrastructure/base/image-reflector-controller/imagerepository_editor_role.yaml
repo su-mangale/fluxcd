@@ -2,7 +2,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: imagerepository-editor-role
+  name: image-reflector-imagerepository-editor-role
 rules:
 - apiGroups:
   - image.toolkit.fluxcd.io

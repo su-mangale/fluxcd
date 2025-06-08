@@ -2,7 +2,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: imagepolicy-viewer-role
+  name: image-reflector-imagepolicy-viewer-role
 rules:
 - apiGroups:
   - image.toolkit.fluxcd.io
