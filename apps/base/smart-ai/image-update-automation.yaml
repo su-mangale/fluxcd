@@ -11,7 +11,7 @@ spec:
     commit:
       author:
         email: lopchanmangal5@gmail.com
-        name: LinuxNerdBTW
+        name: su-mangale
       messageTemplate: "{{range .Updated.Images}}{{println .}}{{end}}"
   interval: 1m0s
   sourceRef:
