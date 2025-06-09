@@ -3,3 +3,4 @@ resources:
   - capacitor/
   - image-reflector-controller/
   - image-automation-controller/
+  - bitnami-sealed-secrets-controller/
