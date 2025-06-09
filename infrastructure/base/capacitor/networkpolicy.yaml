@@ -15,7 +15,7 @@ spec:
       - namespaceSelector:
           matchLabels:
             kubernetes.io/metadata.name: kommander-flux
-      - podSelector:
+      - namespaceSelector:
           matchLabels:
-            app.kubernetes.io/instance: capacitor
+            kubernetes.io/metadata.name: kommander
     
