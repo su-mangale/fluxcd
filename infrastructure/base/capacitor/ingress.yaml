@@ -11,7 +11,7 @@ metadata:
     app: capacitor
     component: service
     tier: backend
-  # Note: The namespace is set to kommander-flux, which is consistent with the original example.
+
 spec:
   tls:
     - hosts:
