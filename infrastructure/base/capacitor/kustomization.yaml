@@ -1,3 +1,6 @@
 resources:
   - https://raw.githubusercontent.com/gimlet-io/capacitor/main/deploy/k8s/rbac.yaml
   - https://raw.githubusercontent.com/gimlet-io/capacitor/main/deploy/k8s/manifest.yaml
+  - ingress.yaml
+
+namespace: kommander-flux
