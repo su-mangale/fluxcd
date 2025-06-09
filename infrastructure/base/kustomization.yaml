@@ -1,5 +1,5 @@
 resources:
-  - nginx-ingress/
+  - nginx-ingress-controller/
   - image-reflector-controller/
   - image-automation-controller/
   - bitnami-sealed-secrets-controller/
