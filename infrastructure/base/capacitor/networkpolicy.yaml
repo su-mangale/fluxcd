@@ -1,0 +1,21 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: capacitor-allow-ingress
+  namespace: kommander-flux
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/instance: capacitor
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+      - namespaceSelector:
+          matchLabels:
+            kubernetes.io/metadata.name: kommander-flux
+      - podSelector:
+          matchLabels:
+            app.kubernetes.io/instance: capacitor
+    
