@@ -3,3 +3,4 @@ resources:
   - ../base/jenkins
   - ../base/smart-ai
   - ../base/gitea
+  - ../base/capacitor
