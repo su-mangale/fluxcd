@@ -8,5 +8,3 @@ resources:
   - serviceAccount.yaml
   - volume.yaml
   - docker.io-sealed.yaml
-
-namespace: jenkins
