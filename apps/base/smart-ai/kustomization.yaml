@@ -10,11 +10,4 @@ resources:
   - service.yaml
   - docker.io-sealed.yaml
 namespace: smart-ai
-commonLabels:
-  app: smart-ai
-  app.kubernetes.io/name: smart-ai
-  app.kubernetes.io/instance: smart-ai
-  app.kubernetes.io/component: smart-ai
-  app.kubernetes.io/part-of: smart-ai
-  app.kubernetes.io/managed-by: kustomize
 
