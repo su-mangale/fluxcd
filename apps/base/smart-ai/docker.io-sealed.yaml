@@ -3,17 +3,17 @@ apiVersion: bitnami.com/v1alpha1
 kind: SealedSecret
 metadata:
   annotations:
-    sealedsecrets.bitnami.com/cluster-wide: "true"
+    sealedsecrets.bitnami.com/namespace-wide: "true"
   creationTimestamp: null
   name: docker.io
   namespace: smart-ai
 spec:
   encryptedData:
-    .dockerconfigjson: AgCUjXQfH9uH0I58KQhfku0fzfR0pEqrVkQuG8mT8cojc4vJnP2ZXBP6nrz6opozTO5EY7pwLYSnw5sjTt8Fdl7TaxfzlAVS2CplFBQlhIHapZxR1s+HoU0wUFX+TqPufueLSLvQbGnP3u50sxaRK5MtX00Suny4OOeAhzXN8zt/GI1JAub+DLPo72ivCai1AYs1g/2+pJUe4kFqdcN/L3X1lq4ROTyHa2/96wh13Ytrqp0M04Q091HPpG1yiw2qHK52urjouAmVD/INOaSIz9ZaLeCok69MltZCiKHJ80B+K3C5BXO4IjJze7AGOCRoKkXi5NCW9WKXLjQprlIRG0WcmogFsa2jfeo6/a/O4ysir36pylg7RQE/qdOb+fUcpKSUWVvpu+bHlsxWaMpndDZr/1ccBS/9lCFGr603UGOWJY2Jobjs/8+t5mWyg4U+i8r4s0yfNR0v62TRN89Y08Ur5cEJE2SfRVXCIAJQ9akur5LRkLP9rOibQsI1HzD1UMjvLlUh9HvaHyfznfrknHhQTfEpidOVon4ZS2g/xg9xN+igeDGHqySVzMJ5FaK45hobyfAS93Epy1HLOxQxC8yZWq0woX4BVOUU9OmhtbimOoF6MS9FswKJADr+C98kEBMTZd92V7uicq6nyFQqtUMG8nGuuq0GVNj/NSgcbu4cGSOZ78DO49Cp36t2xxm+EGBO7bMjkUyn49flcURk2tBBZ461//VO4btsnCKySBR4Vpsd/98hAea+O13a/99zF2PSbkmC2OdBvfJWwuTQQrhKiE52CPHCi+jlp5afw82lP0fRk/DtbY3qTWJ4gfR7V+A/wy1ZARyRMlqVnBhlP9bpyJwL0Za7rYtH6RZljrpsuHsAVyI5Eo0KEgko/tlJZmLwxR0EHy0BOCseDfU6RFT9nCcB6+kRf7qg
+    .dockerconfigjson: AgAcKRMO3OGYIfxgxo66hOCYkp3SjLuiPKazWT0qSSx0lgNPvEmaGa8riZRB9V8LY2q1Chnwfm5zVYY/vZSqR62QDdRSucL3Vf3EXWXpZU3Gang431Fw6AVzZkd92AdcOGMWm6dTrrYgSG1NecgV1EFaM4bpl8Fgf3X+5UgUFjW436uQ3PwxbCv61zBH+VSbaALGjhHNo4sir8QcyCjMEIiNAkWTso3Q1qy2u9XblSUmBXP/OihjpPDEjLmfjbWSShLBGtdAXUy75OQ2YB40iVxSGd578/FuZe126k104SLbFwyDI0ot7adQ54XtOBDDflFiBZDkYrx1pXjvZjAiiRAymvzMYivw/yA34qMqLVf5NCK+DMno4KgR9ZWneHQ+vVBEceS9kH9BlGF8EuBHFqYpxDyfZp41XQeLm9/8mlfGkVtcb3nosGVh1LjtCI3JtaxT4sVqE76XKqw/D2zFny14jHWAtuAy56O9+69EECTLsUzglIWuBKQ9enlY+3K/7uzrVQlLNywtVsFvEW3Q490cv5ZOjQXtq3gH9v9TLRpwgYjax3Lm5oagKsB3zykknjTHu8l0pU++JOxWuQWLZBA9od2fTd7vdqHk3KAzcboSwac3CwPqmV4sLttOB+DstxvNOqEcUPm75Vtl5T+wQjdUHXw1XJZZ9KqND5ZI023hSWdJOayA66DBS4SWd21SVtiQR9TNlSk56g0DhvYaymdFw67k2utHIZAAf0R253yDdtlRGN4hnuc7TSYOJNdY9wJLhauX/L1ECjte4a1h89IM3BfqcF6ZDAQKXTK0h/1OshTomGKOzH+deq1Cz8eW+WkP0kaKb2VkV5rAAGrCOJ4tTusqaMmdHnO7roaEZzF+z1GXJaXUJYkDW2Rg2SIcwdoDoYqONfHyUKdAIfaALK2RO0wHYKT46ifr
   template:
     metadata:
       annotations:
-        sealedsecrets.bitnami.com/cluster-wide: "true"
+        sealedsecrets.bitnami.com/namespace-wide: "true"
       creationTimestamp: null
       name: docker.io
       namespace: smart-ai
