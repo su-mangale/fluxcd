@@ -10,10 +10,3 @@ resources:
   - docker.io-sealed.yaml
 
 namespace: jenkins
-commonLabels:
-  app: jenkins
-  app.kubernetes.io/name: jenkins
-  app.kubernetes.io/instance: jenkins
-  app.kubernetes.io/component: jenkins
-  app.kubernetes.io/part-of: jenkins
-  app.kubernetes.io/managed-by: kustomize
