@@ -7,3 +7,4 @@ metadata:
     environment: production
     team: devops
     version: v1.0.0
+    istio-injection: enabled
