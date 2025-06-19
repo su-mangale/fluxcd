@@ -1,0 +1,3 @@
+resources:
+  - ../../base/metallb-external-lb
+namespace: metallb-system
