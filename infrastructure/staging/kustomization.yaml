@@ -1,6 +1,6 @@
 resources:
   - ./flux-system
   - ./metallb-system
-  - ./cert-manager-system
+  - ../base/cert-manager
   - ../base/networking/traefik
   - ../base/monitoring/metrics-server
