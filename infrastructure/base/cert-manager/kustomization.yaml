@@ -1,0 +1,4 @@
+# Kustomization for cert-manager
+resources:
+  - cert-manager-helmrepo.yaml
+  - helmrelease.yaml
