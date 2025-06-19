@@ -1,5 +1,5 @@
 resources:
-  - ../../base/bitnami-sealed-secrets
-  - ../../base/image-automation-controller
-  - ../../base/image-reflector-controller
+  - ../../base/controllers/sealed-secrets
+  - ../../base/controllers/image-automation
+  - ../../base/controllers/image-reflector
 namespace: flux-system

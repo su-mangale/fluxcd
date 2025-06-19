@@ -1,9 +1,0 @@
-resources:
-  - https://github.com/fluxcd/image-automation-controller/releases/download/v0.41.0/image-automation-controller.crds.yaml
-  - https://github.com/fluxcd/image-automation-controller/releases/download/v0.41.0/image-automation-controller.deployment.yaml
-  - role.yaml
-  - role-binding.yaml
-  - leader-election-role.yaml
-  - leader-election-role-binding.yaml
-
-namespace: kommander-flux
