@@ -1,6 +1,5 @@
 resources:
-  - image-reflector-controller/
-  - image-automation-controller/
-  - bitnami-sealed-secrets-controller/
+  # This kustomization.yaml is intentionally left empty.
+  # All resources are managed via overlays (e.g., staging, production).
 
 
