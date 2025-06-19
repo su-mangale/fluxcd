@@ -1,0 +1,5 @@
+resources:
+  - ../../base/controllers/sealed-secrets
+  - ../../base/controllers/image-automation
+  - ../../base/controllers/image-reflector
+namespace: flux-system

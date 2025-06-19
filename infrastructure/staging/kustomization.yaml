@@ -1,4 +1,4 @@
 resources:
   - ./flux-system
   - ./metallb-system
-
+  - ../base/networking/traefik

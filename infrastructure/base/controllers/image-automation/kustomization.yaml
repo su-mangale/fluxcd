@@ -1,6 +1,6 @@
 # Kustomization for Image Automation Controller
 resources:
-  - ../../image-automation-controller/leader-election-role-binding.yaml
-  - ../../image-automation-controller/leader-election-role.yaml
-  - ../../image-automation-controller/role-binding.yaml
-  - ../../image-automation-controller/role.yaml
+  - leader-election-role-binding.yaml
+  - leader-election-role.yaml
+  - role-binding.yaml
+  - role.yaml
