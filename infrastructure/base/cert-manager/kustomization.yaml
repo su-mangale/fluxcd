@@ -2,3 +2,4 @@
 resources:
   - cert-manager-helmrepo.yaml
   - helmrelease.yaml
+  - namespace.yaml
