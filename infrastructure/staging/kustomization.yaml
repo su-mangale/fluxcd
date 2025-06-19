@@ -1,5 +1,4 @@
 resources:
-  - ../base/
-  - ../base/metallb-external-lb/
+  - ./flux-system
+  - ./metallb-system
 
-namespace: flux-system
