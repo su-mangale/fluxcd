@@ -14,4 +14,7 @@ spec:
         name: metrics-server
         namespace: flux-system
   interval: 5m
-  values: {}
+  values:
+    args:
+      - --kubelet-insecure-tls
+      - --kubelet-preferred-address-types=InternalIP
