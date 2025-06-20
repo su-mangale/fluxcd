@@ -17,3 +17,13 @@ subjects:
   - kind: ServiceAccount
     name: kiali-user
     namespace: istio-system
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: kiali-user-token
+  namespace: istio-system
+  annotations:
+    kubernetes.io/service-account.name: kiali-user
+type: kubernetes.io/service-account-token
+---
