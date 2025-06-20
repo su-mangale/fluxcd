@@ -1,9 +1,6 @@
 resources:
   - ./flux-system
-  - ./metallb-system
   - ./istio-system
-  - ../base/cert-manager
   - ../base/networking/traefik
-  - ../base/monitoring/metrics-server
   - ../base/service-mesh/kiali
   - ../base/monitoring/grafana-loki
