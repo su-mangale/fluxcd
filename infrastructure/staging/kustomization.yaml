@@ -4,3 +4,4 @@ resources:
   - ../base/cert-manager
   - ../base/networking/traefik
   - ../base/monitoring/metrics-server
+  - ./istio-system
