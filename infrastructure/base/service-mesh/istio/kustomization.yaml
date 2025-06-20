@@ -3,3 +3,4 @@ resources:
   - istio-helmrepo.yaml
   - istio-base-helmrelease.yaml
   - istiod-helmrelease.yaml
+  - ingress-gateway
