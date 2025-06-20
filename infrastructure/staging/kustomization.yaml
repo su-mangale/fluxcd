@@ -6,3 +6,4 @@ resources:
   - ../base/networking/traefik
   - ../base/monitoring/metrics-server
   - ../base/service-mesh/kiali
+  - ../base/monitoring/grafana-loki
