@@ -3,4 +3,4 @@ resources:
   - ./istio-system
   - ../base/networking/traefik
   - ../base/service-mesh/kiali
-  - ../base/monitoring/grafana-loki
+
