@@ -63,11 +63,11 @@ spec:
           imagePullPolicy: IfNotPresent
           resources:
             limits:
-              memory: "2Gi"
-              cpu: "1000m"
+              memory: "512Mi"
+              cpu: "250m"
             requests:
-              memory: "500Mi"
-              cpu: "500m"
+              memory: "256Mi"
+              cpu: "100m"
           # env:
           #   - name: JAVA_OPTS
           #     value: "-Djavax.net.ssl.trustStore=$JAVA_HOME/lib/security/cacerts -Djavax.net.ssl.trustStorePassword=changeit"
