@@ -1,3 +1,0 @@
-resources:
-  - ../../base/networking/metallb
-namespace: metallb-system

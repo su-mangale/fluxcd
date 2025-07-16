@@ -2,11 +2,11 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: capacitor
-  namespace: kommander-flux
-  annotations:
-    cert-manager.io/cluster-issuer: "kommander-ca"
-    traefik.ingress.kubernetes.io/router.tls: "true"
-    traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+  namespace: flux-system
+  # annotations:
+  #   cert-manager.io/cluster-issuer: "kommander-ca"
+  #   traefik.ingress.kubernetes.io/router.tls: "true"
+  #   traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
   labels:
     app: capacitor
     component: service
@@ -15,10 +15,10 @@ metadata:
 spec:
   tls:
     - hosts:
-        - capacitor.app.local
+        - capacitor.mangale.com.np
       secretName: capacitor-tls
   rules:
-    - host: capacitor.app.local
+    - host: capacitor.mangale.com.np
       http:
         paths:
           - pathType: Prefix

@@ -4,4 +4,4 @@ resources:
   - ingress.yaml
   - networkpolicy.yaml
 
-namespace: kommander-flux
+namespace: flux-system

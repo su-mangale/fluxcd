@@ -1,3 +1,4 @@
 resources:
   # - ../base/flask_404_app
   - ../base/jenkins
+  - ../base/capacitor

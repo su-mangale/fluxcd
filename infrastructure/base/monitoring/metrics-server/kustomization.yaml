@@ -1,4 +1,0 @@
-# Kustomization for Metrics Server
-resources:
-  - metrics-server-helmrepo.yaml
-  - helmrelease.yaml
