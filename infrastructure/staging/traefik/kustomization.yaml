@@ -1,0 +1,3 @@
+resources:
+  - ../../base/networking/traefik
+namespace: kube-system
