@@ -10,7 +10,7 @@ metadata:
     storage: nutanix-volume
 # This PersistentVolumeClaim is used to request storage for Jenkins.
 spec:
-  storageClassName: nutanix-volume
+  # storageClassName: nutanix-volume
   accessModes:
     - ReadWriteOnce
   resources:
