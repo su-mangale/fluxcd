@@ -1,7 +1,4 @@
 resources:
-  # - ./flux-system
-  # - ./istio-system
-  - ../base/controllers/sealed-secrets
-  - ../base/networking/traefik
-  # - ../base/service-mesh/kiali
-
+  - flux-system
+  - traefik
+  

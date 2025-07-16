@@ -2,5 +2,4 @@ resources:
   - ../base/flask_404_app
   - ../base/jenkins
   - ../base/smart-ai
-  - ../base/gitea
   - ../base/capacitor
