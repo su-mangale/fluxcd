@@ -18,7 +18,7 @@ spec:
               service:
                 name: kiali
                 port:
-                  number: 9090
+                  number: 20001
   tls:
     - hosts:
         - kiali.mangale.com.np
