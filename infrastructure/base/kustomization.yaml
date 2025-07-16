@@ -1,5 +1,0 @@
-resources:
-  # This kustomization.yaml is intentionally left empty.
-  # All resources are managed via overlays (e.g., staging, production).
-
-
