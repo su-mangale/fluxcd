@@ -1,4 +1,5 @@
 resources:
+  - namespace.yaml
   - kiali-helmrepo.yaml
   - helmrelease.yaml
   - kiali-auth.yaml
