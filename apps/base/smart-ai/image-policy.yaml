@@ -7,8 +7,5 @@ spec:
   imageRepositoryRef:
     name: smart-ai
   policy:
-    alphabetical:
-      order: desc
-  filterTags:
-    pattern: '^[a-f0-9]{7}$|^latest$'  # Accept commit hashes OR latest tag
-    extract: '$0'
+    semver:
+      range: "2.4.x"
