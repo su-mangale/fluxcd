@@ -4,7 +4,7 @@ resources:
   - deployment.yaml
   - image-policy.yaml
   - image-repo.yaml
-  - image-update-automation.yaml
+  # - image-update-automation.yaml
   - ingress.yaml
   - namespace.yaml
   - service.yaml
