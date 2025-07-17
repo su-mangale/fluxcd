@@ -12,11 +12,16 @@ spec:
       author:
         email: lopchanmangal5@gmail.com
         name: su-mangale
-      messageTemplate: "{{range .Updated.Images}}{{println .}}{{end}}"
-  interval: 1m0s
+      messageTemplate: |
+        Automated image update for smart-ai
+        
+        {{range .Updated.Images}}{{println .}}{{end}}
+    push:
+      branch: main
+  interval: 5m0s
   sourceRef:
     kind: GitRepository
-    name: fluxcd
+    name: flux-system
   update:
-    path: ./
+    path: ./apps/base/smart-ai
     strategy: Setters
