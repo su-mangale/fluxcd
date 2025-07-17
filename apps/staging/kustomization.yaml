@@ -1,4 +1,2 @@
 resources:
-  - ../base/jenkins
-  - ../base/capacitor
   - ../base/smart-ai
