@@ -24,7 +24,7 @@ spec:
         - name: docker.io
       containers:
         - name: smart-ai
-          image: mangale/smart-ai:085ebb3 # {"$imagepolicy": "flux-system:smart-ai"}
+          image: mangale/smart-ai:f2ea0da # {"$imagepolicy": "flux-system:smart-ai"}
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 5000
