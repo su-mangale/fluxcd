@@ -8,4 +8,4 @@ spec:
     name: smart-ai
   policy:
     alphabetical:
-      order: Ascending
+      order: asc
