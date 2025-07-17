@@ -2,9 +2,9 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: smart-ai
-  annotations:
-    cert-manager.io/cluster-issuer: "kommander-ca"
-    traefik.ingress.kubernetes.io/router.tls: "true"
+  # annotations:
+  #   cert-manager.io/cluster-issuer: "kommander-ca"
+  #   traefik.ingress.kubernetes.io/router.tls: "true"
   namespace: smart-ai
   labels:
     app: smart-ai
@@ -14,10 +14,10 @@ metadata:
 spec:
   tls:
     - hosts:
-        - smart-ai.app.local
+        - smart-ai.mangale.com.np
       secretName: smart-ai-tls
   rules:
-    - host: smart-ai.app.local
+    - host: smart-ai.mangale.com.np
       http:
         paths:
           - path: /
