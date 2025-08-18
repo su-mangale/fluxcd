@@ -1,4 +1,3 @@
-  - crds
-  - controllers/sealed-secrets
+resources:
   - controllers/image-automation
   - controllers/image-reflector
