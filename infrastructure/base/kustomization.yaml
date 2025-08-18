@@ -1,5 +1,4 @@
 resources:
-  # This kustomization.yaml is intentionally left empty.
-  # All resources are managed via overlays (e.g., staging, production).
-
-
+  - controllers/sealed-secrets
+  - controllers/image-automation
+  - controllers/image-reflector
