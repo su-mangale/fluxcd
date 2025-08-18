@@ -1,4 +1,0 @@
-# Kustomization for Traefik Ingress Controller
-resources:
-  - traefik-helmrepo.yaml
-  - helmrelease.yaml
