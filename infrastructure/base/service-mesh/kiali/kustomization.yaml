@@ -1,4 +1,0 @@
-resources:
-  - kiali-helmrepo.yaml
-  - helmrelease.yaml
-  - kiali-auth.yaml
