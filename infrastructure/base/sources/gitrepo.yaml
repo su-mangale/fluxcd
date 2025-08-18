@@ -8,5 +8,5 @@ spec:
     name: github-pat
   interval: 1m0s
   ref:
-    branch: main
+    branch: nkp
   url: https://github.com/su-mangale/fluxcd.git
