@@ -1,6 +1,0 @@
-resources:
-  - ./flux-system
-  # - ./istio-system
-  - ../base/networking/traefik
-  # - ../base/service-mesh/kiali
-
