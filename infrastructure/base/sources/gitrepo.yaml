@@ -2,7 +2,7 @@ apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
 metadata:
   name: fluxcd
-  namespace: flux-system
+  namespace: kommander-flux
 spec:
   secretRef:
     name: github-pat
