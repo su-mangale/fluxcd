@@ -1,2 +1,2 @@
 resources:
-  -  https://github.com/bitnami-labs/sealed-secrets/releases/download/v0.29.0/controller.yaml
+  # Only reference the controller deployment here if you have a separate manifest for it.
