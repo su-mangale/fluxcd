@@ -9,5 +9,3 @@ resources:
   - leader-election-role.yaml
   - role-binding.yaml
   - role.yaml
-
-namespace: kommander-flux
