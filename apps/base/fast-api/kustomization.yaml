@@ -5,7 +5,7 @@ resources:
   - fast-api-deployment.yaml
   - fast-api-service.yaml
   - fast-api-ingress.yaml
-  - postgres-deployment.yaml
+  - postgres-statefulset.yaml
   - postgres-service.yaml
   - postgres-configmap.yaml
   - postgres-secret.yaml
