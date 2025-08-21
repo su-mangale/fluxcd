@@ -1,3 +1,4 @@
 resources:
   - ../base/flask_404_app
-  # - ../base/smart-ai
+  - ../base/smart-ai
+  - ../base/fast-api
