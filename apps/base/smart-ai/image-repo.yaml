@@ -2,7 +2,7 @@ apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImageRepository
 metadata:
   name: smart-ai
-  namespace: flux-system
+  namespace: smart-ai
 spec:
   image: mangale/smart-ai
   interval: 30s
