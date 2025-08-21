@@ -19,5 +19,5 @@ spec:
     name: fluxcd
     namespace: kommander-flux
   update:
-    path: ./
+    path: ./apps/base/smart-ai
     strategy: Setters
