@@ -2,7 +2,7 @@ apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImagePolicy
 metadata:
   name: smart-ai
-  namespace: flux-system
+  namespace: smart-ai
 spec:
   imageRepositoryRef:
     name: smart-ai
