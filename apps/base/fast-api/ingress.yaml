@@ -14,7 +14,7 @@ spec:
         - api.app.local
       secretName: fast-api-tls
   rules:
-    - host: smart-ai.app.local
+    - host: api.app.local
       http:
         paths:
           - path: /
