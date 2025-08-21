@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: db-config
+  namespace: app-namespace
+data:
+  DB_NAME: "appdb"

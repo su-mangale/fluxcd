@@ -20,7 +20,13 @@ spec:
         fsGroup: 2000
       containers:
         - name: fast-api
-          image: docker.io/mangale/fast-api:1.2.21
+          image: docker.io/mangale/fast-api:1.2.
+          env:
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret
+                  key: DATABASE_URL
           ports:
             - containerPort: 8000
           securityContext:
