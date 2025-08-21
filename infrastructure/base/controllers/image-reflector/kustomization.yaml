@@ -10,3 +10,5 @@ resources:
   - role-binding.yaml
   - role.yaml
   - namespace.yaml
+
+namespace: kommander-flux
