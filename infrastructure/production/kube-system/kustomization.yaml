@@ -1,4 +1,4 @@
 resources:
-  - ../base/controllers/sealed-secrets
+  - ../../base/controllers/sealed-secrets
 
 namespace: kube-system
