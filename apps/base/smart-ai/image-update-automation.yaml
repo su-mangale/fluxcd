@@ -7,7 +7,7 @@ spec:
   git:
     checkout:
       ref:
-        branch: main
+        branch: nkp
     commit:
       author:
         email: lopchanmangal5@gmail.com
