@@ -6,7 +6,6 @@ metadata:
     app: smart-ai
     component: service
     tier: backend
-    istio-injection: enabled
   annotations:
     fluxcd.io/managed-by: "flux"
     fluxcd.io/namespace: "smart-ai"
