@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: fast-api-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/cluster-issuer: "kommander-ca"
+    traefik.ingress.kubernetes.io/router.tls: "true"
+  labels:
+    app: fast-api
+spec:
+  tls:
+    - hosts:
+        - api.app.local
+      secretName: fast-api-tls
+  rules:
+    - host: smart-ai.app.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: fast-api-service
+                port:
+                  number: 8000
