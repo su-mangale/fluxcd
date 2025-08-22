@@ -1,11 +1,8 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
 resources:
-  - https://github.com/fluxcd/image-reflector-controller/releases/download/v0.35.1/image-reflector-controller.crds.yaml
-  - https://github.com/fluxcd/image-reflector-controller/releases/download/v0.35.1/image-reflector-controller.deployment.yaml
-  - imagepolicy_editor_role.yaml
-  - imagepolicy_viewer_role.yaml
-  - imagerepository_editor_role.yaml
-  - imagerepository_viewer_role.yaml
-  # - leader-election-role-binding.yaml
-  # - leader-election-role.yaml
-  # - role-binding.yaml
-  # - role.yaml
+- role.yaml
+- role_binding.yaml
+- leader_election_role.yaml
+- leader_election_role_binding.yaml
+namePrefix: image-reflector-

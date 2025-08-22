@@ -1,8 +1,12 @@
-# Kustomization for Image Automation Controller
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
 resources:
-  - https://github.com/fluxcd/image-automation-controller/releases/download/v0.41.2/image-automation-controller.crds.yaml
-  - https://github.com/fluxcd/image-automation-controller/releases/download/v0.41.2/image-automation-controller.deployment.yaml
-  - leader-election-role-binding.yaml
-  - leader-election-role.yaml
-  - role-binding.yaml
-  - role.yaml
+- https://github.com/fluxcd/image-automation-controller/releases/download/v0.41.2/image-automation-controller.crds.yaml
+- https://github.com/fluxcd/image-automation-controller/releases/download/v0.41.2/image-automation-controller.deployment.yaml
+- role.yaml
+- role_binding.yaml
+- leader_election_role.yaml
+- leader_election_role_binding.yaml
+- imageupdateautomation_editor_role.yaml
+- imageupdateautomation_viewer_role.yaml
+namePrefix: image-automation-
