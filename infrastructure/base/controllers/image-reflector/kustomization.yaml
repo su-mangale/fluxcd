@@ -11,4 +11,3 @@ resources:
 - imagepolicy_viewer_role.yaml
 - imagerepository_editor_role.yaml
 - imagerepository_viewer_role.yaml
-namePrefix: image-reflector-
