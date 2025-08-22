@@ -3,10 +3,6 @@ kind: Kustomization
 resources:
 - https://github.com/fluxcd/image-reflector-controller/releases/download/v0.35.1/image-reflector-controller.crds.yaml
 - https://github.com/fluxcd/image-reflector-controller/releases/download/v0.35.1/image-reflector-controller.deployment.yaml
-- role.yaml
-- role_binding.yaml
-- leader_election_role.yaml
-- leader_election_role_binding.yaml
 - imagepolicy_editor_role.yaml
 - imagepolicy_viewer_role.yaml
 - imagerepository_editor_role.yaml
