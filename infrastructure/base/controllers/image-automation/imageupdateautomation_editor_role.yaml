@@ -1,20 +1,24 @@
-# permissions for end users to view imagepolicies.
+# permissions for end users to edit imageupdateautomations.
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: imagepolicy-viewer-role
+  name: imageupdateautomation-editor-role
 rules:
 - apiGroups:
   - image.toolkit.fluxcd.io
   resources:
-  - imagepolicies
+  - imageupdateautomations
   verbs:
+  - create
+  - delete
   - get
   - list
+  - patch
+  - update
   - watch
 - apiGroups:
   - image.toolkit.fluxcd.io
   resources:
-  - imagepolicies/status
+  - imageupdateautomations/status
   verbs:
   - get
