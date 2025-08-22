@@ -1,5 +1,5 @@
 resources:
   - ../../base/controllers/image-automation
-  # - ../../base/controllers/image-reflector
+  - ../../base/controllers/image-reflector
 
 namespace: kommander-flux
