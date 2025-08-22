@@ -40,7 +40,8 @@ spec:
               value: "--auth-host=scram-sha-256"
           volumeMounts:
             - name: db-data
-              mountPath: /var/lib/postgresql/data/pgdata
+              mountPath: /var/lib/postgresql/data
+              subPath: pgdata
           readinessProbe:
             exec:
               command: ["pg_isready", "-U", "$(POSTGRES_USER)", "-d", "$(POSTGRES_DB)"]
