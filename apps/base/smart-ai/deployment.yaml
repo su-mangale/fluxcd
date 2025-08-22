@@ -19,6 +19,7 @@ spec:
         app: smart-ai
         component: service
         tier: backend
+        istio-injection: enabled
     spec:
       # imagePullSecrets:
       #   - name: docker.io
