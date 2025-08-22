@@ -5,7 +5,7 @@ resources:
   - imagepolicy_viewer_role.yaml
   - imagerepository_editor_role.yaml
   - imagerepository_viewer_role.yaml
-  - leader-election-role-binding.yaml
-  - leader-election-role.yaml
-  - role-binding.yaml
-  - role.yaml
+  # - leader-election-role-binding.yaml
+  # - leader-election-role.yaml
+  # - role-binding.yaml
+  # - role.yaml
