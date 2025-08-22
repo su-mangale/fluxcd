@@ -4,3 +4,4 @@ metadata:
   name: fast-api
   labels:
     app: fast-api
+    istio-injection: enabled
