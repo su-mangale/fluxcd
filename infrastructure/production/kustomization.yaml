@@ -1,3 +1,4 @@
 resources:
   - traefik
   - gatekeeper-system
+  - cert-manager
