@@ -7,7 +7,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`traefik.mangale.com.np`) 
+    - match: Host(`traefik.mangale.com.np`) && PathPrefix(`/`)
       kind: Rule
       services:
         - name: nginx
