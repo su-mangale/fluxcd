@@ -55,7 +55,7 @@ spec:
     # Providers tell Traefik where to find routing configuration.
     providers:
       kubernetesIngress:
-        enabled: false
+        enabled: true
       kubernetesGateway:
         enabled: true
 
