@@ -12,7 +12,7 @@ spec:
         name: traefik
         namespace: traefik-ingress
   interval: 5m
-  values: {}
+  values:
     ingressRoute:
       dashboard:
         enabled: true
