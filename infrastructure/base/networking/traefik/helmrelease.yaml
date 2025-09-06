@@ -13,3 +13,14 @@ spec:
         namespace: traefik-ingress
   interval: 5m
   values: {}
+    ingressRoute:
+      dashboard:
+        enabled: true
+        annotations: {}
+        labels: {}
+        matchRule: PathPrefix(`/dashboard`) || PathPrefix(`/api`)
+        services:
+          - name: api@internal
+            kind: Service
+        entryPoints: ["web"]
+
