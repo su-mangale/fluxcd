@@ -21,6 +21,6 @@ spec:
   dnsNames:
     - traefik.mangale.com.np
   issuerRef:
-    name: letsencrypt-staging
+    name: letsencrypt-prod
     kind: ClusterIssuer
     group: cert-manager.io
