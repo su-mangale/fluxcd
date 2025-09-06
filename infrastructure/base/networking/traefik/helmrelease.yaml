@@ -13,13 +13,6 @@ spec:
         namespace: traefik-ingress
   interval: 5m
   values:
-    ports:
-      web:
-        port: 80
-        expose: true
-      websecure:
-        port: 443
-        expose: true
     # Enables the dashboard in Secure Mode
     api:
       dashboard: true
@@ -66,25 +59,6 @@ spec:
       kubernetesGateway:
         enabled: true
 
-    ## Gateway Listeners
-    gateway:
-      listeners:
-        web:           # HTTP listener that matches entryPoint `web`
-          port: 80
-          protocol: HTTP
-          namespacePolicy:
-            from: All
-
-        websecure:         # HTTPS listener that matches entryPoint `websecure`
-          port: 443
-          protocol: HTTPS  # TLS terminates inside Traefik
-          namespacePolicy:
-            from: All
-          mode: Terminate
-          certificateRefs:    
-            - kind: Secret
-              name: local-selfsigned-tls  # the Secret we created before the installation
-              group: ""
 
     # Enable Observability
     logs:
