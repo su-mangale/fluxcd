@@ -1,5 +1,4 @@
 resources:
-  - ../../base/OPA/gatekeeper
-
+  - ../../base/opa/gatekeeper
 
 namespace: gatekeeper-system
