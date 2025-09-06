@@ -5,10 +5,12 @@ metadata:
   namespace: nginx
 spec:
   entryPoints:
-    - web
+    - websecure
   routes:
-    - match: PathPrefix(`/`)
+    - match: Host(`traefik.mangale.com.np`) 
       kind: Rule
       services:
         - name: nginx
           port: 80
+  tls:
+    secretName: traefik-tls
