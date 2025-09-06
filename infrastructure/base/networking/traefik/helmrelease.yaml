@@ -27,6 +27,7 @@ spec:
         middlewares:
           - name: dashboard-auth
           - name: redirectscheme
+          - name: ipallowlist
         tls:
           secretName: traefik-tls
 
@@ -56,7 +57,16 @@ spec:
           redirectScheme:
             scheme: https
             permanent: true
-
+      # IP Allow List Middleware Example
+      - apiVersion: traefik.io/v1alpha1
+        kind: Middleware
+        metadata:
+          name: ipallowlist
+        spec:
+          ipAllowList:
+            sourceRange:
+              - 103.10.28.185/32
+  
     # We will route with Gateway API instead.
     ingressClass:
       enabled: false
