@@ -3,3 +3,4 @@ resources:
   - traefik-helmrepo.yaml
   - helmrelease.yaml
   - namespace.yaml
+  - certificate.yaml
