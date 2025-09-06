@@ -2,4 +2,5 @@ resources:
   - namespace.yaml
   - helmrepo.yaml
   - helmrelease.yaml
-  - clusterissuer-letsencrypt.yaml
+  - letsencrypt-production.yaml
+  - letsencrypt-staging.yaml
