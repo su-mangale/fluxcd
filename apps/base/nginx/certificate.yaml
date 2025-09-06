@@ -21,7 +21,6 @@ spec:
   dnsNames:
     - traefik.mangale.com.np
   ipAddresses:
-    - 127.0.0.1
     - 34.173.249.46
   issuerRef:
     name: letsencrypt-prod
