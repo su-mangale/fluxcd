@@ -27,7 +27,6 @@ spec:
         volumeMounts:
         - mountPath: /usr/share/nginx/html
           name: nginx-index
-          subPath: index.html
       restartPolicy: Always
       volumes:
       - name: nginx-index
