@@ -20,8 +20,6 @@ spec:
     - client auth
   dnsNames:
     - traefik.mangale.com.np
-  ipAddresses:
-    - 34.173.249.46
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer
