@@ -13,7 +13,6 @@ spec:
         namespace: traefik-ingress
   interval: 5m
   values:
-    # Enables the dashboard in inSecure Mode
     api:
       dashboard: true
       insecure: true  # For dev only; use secure access in production
@@ -26,8 +25,9 @@ spec:
         entryPoints: ["web"]
         middlewares:
           - name: dashboard-auth
-
-    # Creates a BasiAuth Middleware and Secret for the Dashboard Security
+        services:
+          - name: api@internal
+            kind: TraefikService
     extraObjects:
       - apiVersion: v1
         kind: Secret
@@ -44,9 +44,3 @@ spec:
         spec:
           basicAuth:
             secret: dashboard-auth-secret
-
-
-
-
-
-
