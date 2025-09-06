@@ -25,10 +25,7 @@ spec:
         entryPoints:
           - websecure
         middlewares:
-          - name: dashboard-auth
-          - name: redirectscheme
-          - name: ipallowlist
-          - name: stripprefix
+          - name: magic-happens
         tls:
           secretName: traefik-tls
 
@@ -45,34 +42,20 @@ spec:
       - apiVersion: traefik.io/v1alpha1
         kind: Middleware
         metadata:
-          name: dashboard-auth
+          name: magic-happens
         spec:
+          # enabled basic auth
           basicAuth:
             secret: dashboard-auth-secret
-      # Redirect to https
-      - apiVersion: traefik.io/v1alpha1
-        kind: Middleware
-        metadata:
-          name: redirectscheme
-        spec:
+          # Redirect to https
           redirectScheme:
             scheme: https
             permanent: true
-      # IP Allow List Middleware Example
-      - apiVersion: traefik.io/v1alpha1
-        kind: Middleware
-        metadata:
-          name: ipallowlist
-        spec:
+          # IP Allow List Middleware Example
           ipAllowList:
             sourceRange:
               - 0.0.0.0/0
-      # Strip prefix /foobar and /fiibar
-      - apiVersion: traefik.io/v1alpha1
-        kind: Middleware
-        metadata:
-          name: stripprefix
-        spec:
+          # Strip prefix /foobar and /fiibar
           stripPrefix:
             prefixes:
               - /foo
