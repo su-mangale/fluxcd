@@ -65,7 +65,7 @@ spec:
         spec:
           ipAllowList:
             sourceRange:
-              - 103.10.28.185/32
+              - 0.0.0.0/0
   
     # We will route with Gateway API instead.
     ingressClass:
