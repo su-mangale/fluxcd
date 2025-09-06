@@ -23,9 +23,6 @@ spec:
         annotations: {}
         labels: {}
         matchRule: PathPrefix(`/dashboard`) || PathPrefix(`/api`)
-        services:
-          - name: api@internal
-            kind: Service
         entryPoints: ["web"]
         middlewares:
           - name: dashboard-auth
