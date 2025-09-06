@@ -26,6 +26,7 @@ spec:
           - websecure
         middlewares:
           - name: dashboard-auth
+          - name: redirectscheme
         tls:
           secretName: traefik-tls
 
@@ -46,6 +47,15 @@ spec:
         spec:
           basicAuth:
             secret: dashboard-auth-secret
+      # Redirect to https
+      - apiVersion: traefik.io/v1alpha1
+        kind: Middleware
+        metadata:
+          name: redirectscheme
+        spec:
+          redirectScheme:
+            scheme: https
+            permanent: true
 
     # We will route with Gateway API instead.
     ingressClass:
