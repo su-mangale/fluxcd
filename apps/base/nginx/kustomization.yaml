@@ -3,5 +3,3 @@ resources:
   - deployment.yaml
   - service.yaml
   - configmap.yaml
-  - certificate.yaml
-  - ingressroute.yaml
