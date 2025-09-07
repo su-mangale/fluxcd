@@ -9,4 +9,5 @@ resources:
   - postgres-service.yaml
   - postgres-configmap.yaml
   - postgres-secret.yaml
+  - certificate.yaml
 namespace: fast-api
