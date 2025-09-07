@@ -10,6 +10,5 @@ resources:
   - postgres-configmap.yaml
   - postgres-secret.yaml
   - certificate.yaml
-  - dashboard-auth.yaml
   - middleware.yaml
 namespace: fast-api
