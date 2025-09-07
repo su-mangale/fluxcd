@@ -1,2 +1,2 @@
 resources:
-  - ../base/nginx
+  - ../base/fast-api
