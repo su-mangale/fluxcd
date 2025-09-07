@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: dashboard-auth
+  namespace: fast-api
+type: kubernetes.io/basic-auth
+stringData:
+  username: admin
+  password: "P@ssw0rd@123"      # Replace with an Actual Password
