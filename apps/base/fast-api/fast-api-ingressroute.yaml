@@ -13,5 +13,9 @@ spec:
       services:
         - name: fast-api
           port: 8000
+      middlewares:
+        - name: dashboard-auth
+        - name: redirectscheme
+      
   tls:
     secretName: fast-api-tls

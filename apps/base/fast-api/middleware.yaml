@@ -1,0 +1,18 @@
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: dashboard-auth
+spec:
+  basicAuth:
+    secret: dashboard-auth
+---
+# Redirect to https 
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: redirectscheme
+spec:
+  redirectScheme:
+    scheme: https
+    permanent: true
+---
