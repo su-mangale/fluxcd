@@ -1,0 +1,17 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: fast-api
+  labels:
+    app: fast-api
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`api.mangale.com.np`) && PathPrefix(`/`)
+      kind: Rule
+      services:
+        - name: fast-api
+          port: 8000
+  tls:
+    secretName: fast-api-tls

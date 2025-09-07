@@ -1,0 +1,12 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - fast-api-namespace.yaml
+  - fast-api-deployment.yaml
+  - fast-api-service.yaml
+  - fast-api-ingressroute.yaml
+  - postgres-statefulset.yaml
+  - postgres-service.yaml
+  - postgres-configmap.yaml
+  - postgres-secret.yaml
+namespace: fast-api
