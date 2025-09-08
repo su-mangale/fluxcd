@@ -26,8 +26,6 @@ spec:
               value: "1000"
             - name: TZ
               value: "Etc/UTC"
-            - name: SERVERURL
-              value: "wg.mangale.com.np"
             - name: SERVERPORT
               value: "51820"
             - name: PEERS
