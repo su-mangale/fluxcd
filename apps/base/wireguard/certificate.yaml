@@ -1,10 +1,10 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: fast-api
-  namespace: fast-api
+  name: wireguard
+  namespace: wireguard
 spec:
-  secretName: fast-api-tls
+  secretName: wireguard-tls
   duration: 2160h # 90d
   renewBefore: 360h # 15d
   subject:
@@ -19,8 +19,8 @@ spec:
     - server auth
     - client auth
   dnsNames:
-    - api.mangale.com.np
+    - wg.mangale.com.np
   issuerRef:
-    name: letsencrypt-prod
+    name: letsencrypt-staging
     kind: ClusterIssuer
     group: cert-manager.io

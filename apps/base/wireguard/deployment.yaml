@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wireguard
+  namespace: wireguard
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wireguard
+  template:
+    metadata:
+      labels:
+        app: wireguard
+    spec:
+      containers:
+        - name: wireguard
+          image: lscr.io/linuxserver/wireguard:1.0.20250521
+          ports:
+            - containerPort: 51820
+              protocol: UDP
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: TZ
+              value: "Etc/UTC"
+            - name: SERVERURL
+              value: "wg.mangale.com.np"
+            - name: SERVERPORT
+              value: "51820"
+            - name: PEERS
+              value: "1"
+            - name: PEERDNS
+              value: "auto"
+            - name: INTERNAL_SUBNET
+              value: "10.13.13.0"
+            - name: ALLOWEDIPS
+              value: "0.0.0.0/0"
+            - name: PERSISTENTKEEPALIVE_PEERS
+              value: ""
+            - name: LOG_CONFS
+              value: "true"
+          volumeMounts:
+            - name: config
+              mountPath: /config
+          securityContext:
+            capabilities:
+              add:
+                - NET_ADMIN
+                - SYS_MODULE
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+      volumes:
+        - name: config
+          persistentVolumeClaim:
+            claimName: wireguard-config
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      sysctls:
+        - name: net.ipv4.conf.all.src_valid_mark
+          value: "1"
