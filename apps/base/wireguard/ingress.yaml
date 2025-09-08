@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: wireguard
+  namespace: wireguard
+  annotations:
+    kubernetes.io/ingress.class: "traefik"
+    traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+    traefik.ingress.kubernetes.io/router.tls: "true"
+spec:
+  rules:
+    - host: wg.mangale.com.np
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: wireguard
+                port:
+                  number: 51820
+  tls:
+    - hosts:
+        - wg.mangale.com.np
+      secretName: wireguard-tls
