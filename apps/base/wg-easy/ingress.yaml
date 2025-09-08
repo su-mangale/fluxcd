@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: wireguard
+  name: wg-easy-ui
   namespace: wireguard
   annotations:
     kubernetes.io/ingress.class: "traefik"
@@ -16,10 +16,10 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: wireguard
+                name: wg-easy
                 port:
-                  number: 51820
+                  number: 51821
   tls:
     - hosts:
         - wg.mangale.com.np
-      secretName: wireguard-tls
+      secretName: wg-easy-ui-tls
