@@ -1,3 +1,4 @@
 resources:
   - ../base/fast-api
   - ../base/wireguard
+  - ../base/wg-easy
