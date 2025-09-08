@@ -31,7 +31,7 @@ spec:
             - name: PEERS
               value: "1"
             - name: PEERDNS
-              value: "auto"
+              value: "1.1.1.1"
             - name: INTERNAL_SUBNET
               value: "10.13.13.0"
             - name: ALLOWEDIPS
