@@ -1,0 +1,19 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: jenkins-ingressroute
+  namespace: jenkins
+  labels:
+    app: jenkins
+    component: ingress
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`jenkins.mangale.com.np`) && PathPrefix(`/`)
+      kind: Rule
+      services:
+        - name: jenkins-service
+          port: 8080
+  tls:
+    secretName: jenkins-tls
