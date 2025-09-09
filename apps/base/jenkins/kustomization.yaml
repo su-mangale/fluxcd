@@ -4,7 +4,7 @@ resources:
   - namespace.yaml
   - deployment.yaml
   - service.yaml
-  - ingress.yaml
+  - ingressRoute.yaml
   - serviceAccount.yaml
   - volume.yaml
-  - docker.io-sealed.yaml
+  - certificate.yaml 
