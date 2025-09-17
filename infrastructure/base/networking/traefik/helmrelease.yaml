@@ -26,9 +26,7 @@ spec:
           - websecure
         middlewares:
           - name: dashboard-auth
-          - name: redirectscheme
           - name: ipallowlist
-          - name: stripprefix
         tls:
           secretName: traefik-tls
 
