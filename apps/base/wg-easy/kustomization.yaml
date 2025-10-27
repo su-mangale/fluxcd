@@ -1,7 +1,0 @@
-resources:
-  - pvc.yaml
-  - service.yaml
-  - deployment.yaml
-  - ingress.yaml
-  - certificate.yaml
-  
