@@ -40,12 +40,10 @@ spec:
       failed: "object.status.conditions.exists(c, c.type == 'Ready' && c.status == 'False')"
     - apiVersion: cert-manager.io/v1
       kind: Certificate
-      namespace: fast-api
       current: "object.status.conditions.exists(c, c.type == 'Ready' && c.status == 'True')"
       inProgress: "!object.status.conditions.exists(c, c.type == 'Ready' && c.status == 'True')"
       failed: "object.status.conditions.exists(c, c.type == 'Ready' && c.status == 'False')"
     - apiVersion: apps/v1
       kind: Deployment
-      namespace: traefik-ingress
       current: "object.status.availableReplicas != null && object.status.availableReplicas >= 1"
       inProgress: "object.status.availableReplicas == null || object.status.availableReplicas < 1"
