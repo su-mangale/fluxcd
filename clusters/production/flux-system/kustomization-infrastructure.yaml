@@ -15,35 +15,3 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  # healthChecks: list the critical infra resources to be included in the health assessment.
-  # wait: true is enabled above, so Flux will apply built-in health checks for all reconciled
-  # resources. We add explicit healthCheckExprs for cert-manager ClusterIssuers (CRDs)
-  # because their readiness is exposed via status.conditions.
-  healthCheckExprs:
-    - apiVersion: cert-manager.io/v1
-      kind: ClusterIssuer
-      # current evaluates to true when ClusterIssuer reports Ready
-      current: 'status.conditions.exists(c, c.type == "Ready" && c.status == "True")'
-      failed: 'status.conditions.exists(c, c.type == "Ready" && c.status == "False")'
-      inProgress: 'status.conditions.exists(c, c.type == "Ready" && c.status == "Unknown")'
-    - apiVersion: cert-manager.io/v1
-      kind: ClusterIssuer
-      # target letsencrypt-staging
-      current: 'status.conditions.exists(c, c.type == "Ready" && c.status == "True")'
-      failed: 'status.conditions.exists(c, c.type == "Ready" && c.status == "False")'
-      inProgress: 'status.conditions.exists(c, c.type == "Ready" && c.status == "Unknown")'
-  # Additionally include explicit healthChecks for core cert-manager Deployments so the
-  # Kustomization only becomes Ready when cert-manager pods are healthy.
-  healthChecks:
-    - apiVersion: apps/v1
-      kind: Deployment
-      name: cert-manager
-      namespace: cert-manager
-    - apiVersion: apps/v1
-      kind: Deployment
-      name: cert-manager-cainjector
-      namespace: cert-manager
-    - apiVersion: apps/v1
-      kind: Deployment
-      name: cert-manager-webhook
-      namespace: cert-manager
