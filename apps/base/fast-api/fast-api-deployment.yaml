@@ -20,7 +20,7 @@ spec:
         fsGroup: 2000
       containers:
         - name: fast-api
-          image: docker.io/mangale/fast-api:1.2.26
+          image: docker.io/mangale/fast-api:1.2.29
           env:
             - name: DATABASE_URL
               valueFrom:
