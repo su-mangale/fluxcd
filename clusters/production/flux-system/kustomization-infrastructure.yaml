@@ -9,9 +9,7 @@ spec:
   interval: 10m0s
   path: "./infrastructure/production"
   prune: true
-  wait: true
   timeout: 5m0s
-  validation: client
   sourceRef:
     kind: GitRepository
     name: flux-system
