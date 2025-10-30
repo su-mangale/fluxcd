@@ -1,0 +1,4 @@
+resources:
+  - ../../base/cert-manager/issuers
+
+# ClusterIssuer is cluster-scoped; do not set a namespace so it is applied cluster-wide

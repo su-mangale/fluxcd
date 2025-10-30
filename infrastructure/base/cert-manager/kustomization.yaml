@@ -3,4 +3,4 @@ resources:
   - helmrepo.yaml
   - helmrelease.yaml
   - letsencrypt-production.yaml
-  - letsencrypt-staging.yaml
+  # staging issuer is applied separately by a dedicated Kustomization (issuers)

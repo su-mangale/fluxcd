@@ -1,3 +1,3 @@
 resources:
   - traefik
-  - cert-manager
+  # cert-manager is managed by a dedicated Kustomization in clusters/production/flux-system
