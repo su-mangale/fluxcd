@@ -8,3 +8,4 @@ resources:
 - traefik-kustomization.yaml
 - fast-api-kustomization.yaml
 - alertmanager-kustomization.yaml
+- helm-repos-kustomization.yaml

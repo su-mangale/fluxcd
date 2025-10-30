@@ -1,0 +1,2 @@
+resources:
+  - ../../base/monitoring/alertmanager/prometheus-helmrepo.yaml

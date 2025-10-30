@@ -20,3 +20,5 @@ spec:
       namespace: flux-system
     - name: traefik
       namespace: flux-system
+    - name: helm-repos
+      namespace: flux-system
