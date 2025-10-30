@@ -11,7 +11,6 @@ spec:
   prune: true
   wait: true
   timeout: 10m0s
-  validation: client
   sourceRef:
     kind: GitRepository
     name: flux-system

@@ -15,7 +15,6 @@ spec:
   # Use a duration string (e.g. 1m0s). The older `retry.limit` field is not
   # part of the Kustomization v1 spec returned by `k explain`.
   retryInterval: 1m0s
-  validation: client
   sourceRef:
     kind: GitRepository
     name: flux-system
