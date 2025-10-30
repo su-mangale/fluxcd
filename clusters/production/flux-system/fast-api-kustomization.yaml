@@ -20,22 +20,3 @@ spec:
       namespace: flux-system
     - name: cert-manager-issuers
       namespace: flux-system
-  # Health checks to ensure infra is ready before considering the app healthy
-  healthChecks:
-    - apiVersion: cert-manager.io/v1
-      kind: ClusterIssuer
-      name: letsencrypt-prod
-    - apiVersion: apps/v1
-      kind: Deployment
-      name: traefik
-      namespace: traefik-ingress
-  healthCheckExprs:
-    - apiVersion: cert-manager.io/v1
-      kind: ClusterIssuer
-      current: "object.status.conditions.exists(c, c.type == 'Ready' && c.status == 'True')"
-      failed: "object.status.conditions.exists(c, c.type == 'Ready' && c.status == 'False')"
-    # Certificate readiness check removed to avoid blocking app reconcile while cert-manager issues certs.
-    - apiVersion: apps/v1
-      kind: Deployment
-      current: "object.status.availableReplicas != null && object.status.availableReplicas >= 1"
-      inProgress: "object.status.availableReplicas == null || object.status.availableReplicas < 1"
