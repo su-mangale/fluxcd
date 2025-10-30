@@ -2,5 +2,5 @@ resources:
   - namespace.yaml
   - helmrepo.yaml
   - helmrelease.yaml
-  - letsencrypt-production.yaml
-  - letsencrypt-staging.yaml
+  # - letsencrypt-production.yaml
+  # - letsencrypt-staging.yaml
