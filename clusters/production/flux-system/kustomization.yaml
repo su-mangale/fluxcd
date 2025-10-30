@@ -4,3 +4,5 @@ resources:
 - gotk-components.yaml
 - gotk-sync.yaml
 - kustomization-infrastructure.yaml
+ - cert-manager-kustomization.yaml
+ - cert-manager-issuers-kustomization.yaml
