@@ -7,3 +7,4 @@ resources:
 - cert-manager-issuers-kustomization.yaml
 - traefik-kustomization.yaml
 - fast-api-kustomization.yaml
+- alertmanager-kustomization.yaml

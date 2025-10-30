@@ -1,0 +1,22 @@
+---
+# Reconcile Alertmanager after cert-manager and traefik are ready
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: alertmanager
+  namespace: flux-system
+spec:
+  interval: 10m0s
+  path: "./infrastructure/production/alertmanager"
+  prune: true
+  wait: true
+  timeout: 10m0s
+  retryInterval: 1m0s
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  dependsOn:
+    - name: cert-manager
+      namespace: flux-system
+    - name: traefik
+      namespace: flux-system
