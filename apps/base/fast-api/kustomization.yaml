@@ -3,7 +3,7 @@ kind: Kustomization
 resources:
   - fast-api-namespace.yaml
   - fast-api-deployment.yaml
-  - ../fast-api-service.yaml
+  - fast-api-service.yaml
   - fast-api-ingressroute.yaml
   - postgres-statefulset.yaml
   - postgres-service.yaml
