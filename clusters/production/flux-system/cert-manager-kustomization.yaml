@@ -6,11 +6,13 @@ metadata:
   name: cert-manager
   namespace: flux-system
 spec:
-  interval: 10m0s
+  interval: 1m0s
   path: "./infrastructure/production/cert-manager"
   prune: true
   wait: true
-  timeout: 5m0s
+  timeout: 15m0s
+  retry:
+    limit: 6
   validation: client
   sourceRef:
     kind: GitRepository

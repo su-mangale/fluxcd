@@ -1,0 +1,22 @@
+---
+# Reconcile Traefik only after cert-manager and cert-manager issuers are ready
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: traefik
+  namespace: flux-system
+spec:
+  interval: 10m0s
+  path: "./infrastructure/production/traefik"
+  prune: true
+  wait: true
+  timeout: 10m0s
+  validation: client
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  dependsOn:
+    - name: cert-manager
+      namespace: flux-system
+    - name: cert-manager-issuers
+      namespace: flux-system

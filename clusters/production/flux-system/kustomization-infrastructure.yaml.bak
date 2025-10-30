@@ -1,4 +1,5 @@
 ---
+# Backup of original kustomization-infrastructure.yaml
 # Manage infrastructure/production with Flux
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
