@@ -2,5 +2,5 @@ resources:
   - namespace.yaml
   - helmrepo.yaml
   - helmrelease.yaml
-  - letsencrypt-production.yaml
   # staging issuer is applied separately by a dedicated Kustomization (issuers)
+  # production issuer is applied separately by a dedicated Kustomization (issuers)
