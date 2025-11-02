@@ -41,7 +41,4 @@ spec:
       email_configs:
       - to: 'mangal.lopchan@digitalnetwork.com.np'
         send_resolved: true
-        # --- ADD THESE TWO LINES ---
-        subject: '{{ template "email.subject" . }}'
-        html: '{{ template "email.html" . }}'
 
