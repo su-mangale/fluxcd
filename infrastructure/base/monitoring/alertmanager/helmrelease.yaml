@@ -33,10 +33,17 @@ spec:
     configmapReload:
       enabled: true
       name: configmap-reload
-
     receivers:
     - name: default-receiver
       email_configs:
       - to: 'mangal.lopchan@digitalnetwork.com.np'
         send_resolved: true
+    extraVolumeMounts:
+    - name: templates-volume
+      mountPath: /etc/alertmanager-templates
+      readOnly: true
+    extraVolumes:
+    - name: templates-volume
+      configMap:
+        name: alertmanager-email-template
 
