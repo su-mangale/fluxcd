@@ -18,6 +18,8 @@ spec:
     service:
       type: ClusterIP
     automountServiceAccountToken: false
+    extraArgs:
+      - "--web.enable-lifecycle=true"
     ingress:
       enabled: true
       className: traefik
@@ -33,6 +35,7 @@ spec:
     configmapReload:
       enabled: true
       name: configmap-reload
+
     templates:
       alertmanager.tmpl: |-
         {{ define "email.subject" -}}
