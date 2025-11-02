@@ -44,11 +44,4 @@ spec:
         # --- ADD THESE TWO LINES ---
         subject: '{{ template "email.subject" . }}'
         html: '{{ template "email.html" . }}'
-    extraVolumeMounts:
-    - name: templates-volume
-      mountPath: /etc/alertmanager
-      readOnly: true
-    extraVolumes:
-    - name: templates-volume
-      configMap:
-        name: alertmanager-email-template
+
