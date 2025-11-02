@@ -5,3 +5,4 @@ resources:
   - prometheus-helmrepo.yaml
   - namespace.yaml
   - certificate.yaml
+  - emailtemplate.yaml

@@ -1,0 +1,71 @@
+### alertmanager-email-template.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: alertmanager-email-template
+  namespace: monitoring # Use the same namespace as your Alertmanager
+data:
+  # The file name must end in .tmpl to be loaded by Alertmanager
+  email.tmpl: |
+{{ define "email.subject" -}}
+[{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Len }}{{ end }}] Alert: {{ .CommonLabels.alertname }} ({{ .CommonLabels.severity | toUpper }})
+{{- end }}
+
+{{ define "email.html" -}}
+<html>
+<head>
+<style>
+  body { font-family: Arial, sans-serif; line-height: 1.6; }
+  .container { max-width: 800px; margin: 20px auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px; }
+  .header-firing { background-color: #f44336; color: white; padding: 15px; border-radius: 5px 5px 0 0; }
+  .header-resolved { background-color: #4CAF50; color: white; padding: 15px; border-radius: 5px 5px 0 0; }
+  .alert-box { border: 1px solid #ccc; margin-top: 10px; border-radius: 5px; overflow: hidden; }
+  .details { padding: 10px; }
+  .label-list { list-style-type: none; padding: 0; }
+  .label-list li { margin-bottom: 5px; }
+  .label-list strong { display: inline-block; width: 120px; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="{{ if eq .Status "firing" }}header-firing{{ else }}header-resolved{{ end }}">
+      <h1>{{ .Status | toUpper }} ALERT</h1>
+    </div>
+    
+    <div class="details">
+      <h2>Summary of Group</h2>
+      <p><strong>Alerts Fired/Resolved:</strong> {{ .Alerts.Len }}</p>
+      <p><strong>Common Severity:</strong> {{ .CommonLabels.severity | default "n/a" | title }}</p>
+
+      {{ range .Alerts }}
+      <div class="alert-box">
+        <h3 style="background-color: #eee; padding: 8px;">{{ .Labels.alertname }} - {{ .Status | toUpper }}</h3>
+        <div style="padding: 10px;">
+            <p><strong>Message:</strong> {{ .Annotations.message | default "No message provided." }}</p>
+            <p><strong>Reason:</strong> {{ .Labels.reason | default "n/a" }}</p>
+            <p><strong>Namespace:</strong> {{ .Labels.namespace | default "n/a" }}</p>
+            <p><strong>Start Time:</strong> {{ .StartsAt | datetime }}</p>
+            {{ if eq .Status "resolved" }}
+            <p><strong>Resolved Time:</strong> {{ .EndsAt | datetime }}</p>
+            {{ end }}
+
+            <h4>Labels:</h4>
+            <ul class="label-list">
+            {{ range .Labels.SortedPairs }}
+              <li><strong>{{ .Name }}:</strong> {{ .Value }}</li>
+            {{ end }}
+            </ul>
+        </div>
+      </div>
+      {{ end }}
+
+      <p style="margin-top: 20px;">
+        <a href="{{ .ExternalURL }}" style="color: #1a73e8; text-decoration: none; font-weight: bold;">
+          View All Alerts in Alertmanager
+        </a>
+      </p>
+    </div>
+  </div>
+</body>
+</html>
+{{- end }}
