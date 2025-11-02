@@ -15,8 +15,3 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  dependsOn:
-    - name: traefik
-      namespace: flux-system
-    - name: cert-manager-issuers
-      namespace: flux-system
