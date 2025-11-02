@@ -4,3 +4,4 @@ resources:
   - helmrelease.yaml
   - prometheus-helmrepo.yaml
   - namespace.yaml
+  - certificate.yaml
