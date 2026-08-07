@@ -1,4 +1,0 @@
-resources:
-  - ../../base/cert-manager
-
-namespace: cert-manager

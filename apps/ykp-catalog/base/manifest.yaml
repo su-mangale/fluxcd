@@ -1,0 +1,61 @@
+# ==============================================================================
+# 4. CATALOG SERVICE (Port 3003)
+# ==============================================================================
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ykp-catalog
+  namespace: ykp-system
+  labels:
+    app: ykp-catalog
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ykp-catalog
+  template:
+    metadata:
+      labels:
+        app: ykp-catalog
+    spec:
+      containers:
+        - name: catalog
+          image: ghcr.io/su-mangale/ykp-catalog:sha-d5ce0eb
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3003
+          env:
+            - name: NODE_ENV
+              value: production
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 256Mi
+          readinessProbe:
+            httpGet:
+              path: /catalog
+              port: 3003
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /catalog
+              port: 3003
+            initialDelaySeconds: 15
+            periodSeconds: 20
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ykp-catalog
+  namespace: ykp-system
+spec:
+  selector:
+    app: ykp-catalog
+  ports:
+    - protocol: TCP
+      port: 3003
+      targetPort: 3003

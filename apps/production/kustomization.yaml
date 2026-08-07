@@ -1,3 +1,9 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
 resources:
-  - ../base/fast-api
-  # - ../base/jenkins
+  - namespace.yaml
+  - ../ykp-dashboard/production
+  - ../ykp-auth/production
+  - ../ykp-catalog/production
+  - ../ykp-shell/production
+  - ../ykp-api/production

@@ -1,0 +1,63 @@
+# ==============================================================================
+# 3. DASHBOARD SERVICE (Port 3002)
+# ==============================================================================
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ykp-dashboard
+  namespace: ykp-system
+  labels:
+    app: ykp-dashboard
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ykp-dashboard
+  template:
+    metadata:
+      labels:
+        app: ykp-dashboard
+    spec:
+      containers:
+        - name: dashboard
+          image: ghcr.io/su-mangale/ykp-dashboard:sha-d5ce0eb
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3002
+          env:
+            - name: NODE_ENV
+              value: production
+            - name: NEXT_PUBLIC_BACKEND_URL
+              value: http://ykp-api:8080
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 256Mi
+          readinessProbe:
+            httpGet:
+              path: /dashboard
+              port: 3002
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /dashboard
+              port: 3002
+            initialDelaySeconds: 15
+            periodSeconds: 20
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ykp-dashboard
+  namespace: ykp-system
+spec:
+  selector:
+    app: ykp-dashboard
+  ports:
+    - protocol: TCP
+      port: 3002
+      targetPort: 3002

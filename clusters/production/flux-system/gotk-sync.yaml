@@ -8,7 +8,7 @@ metadata:
 spec:
   interval: 1m0s
   ref:
-    branch: main
+    branch: ykp-dev
   secretRef:
     name: flux-system
   url: https://github.com/su-mangale/fluxcd.git

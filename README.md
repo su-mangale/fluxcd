@@ -1,86 +1,36 @@
 # FluxCD GitOps Repository
 
-This repository implements a scalable, production-ready GitOps workflow using FluxCD. It is organized for Kubernetes platform and application management, supporting overlays for production, and grouping resources by application and infrastructure component.
+This branch uses an environment-first FluxCD layout for the `production` cluster.
 
-## Repository Structure
-
-```
-repo-root/
-├── apps/
-│   ├── base/           # Base manifests for each application (HelmRelease, Kustomization, etc.)
-│   └── production/     # Production overlays (patches, env-specific config)
-├── infrastructure/
-│   ├── base/           # Base manifests for infra components (ingress, sources, etc.)
-│   └── production/     # Production overlays (patches, env-specific config)
-├── clusters/
-│   └── production/     # Kustomization for production cluster (references overlays)
-├── helm/               # Helm charts for custom or third-party apps
-└── README.md           # This file
+```text
+clusters/production/                 # Flux reconciliation entrypoint
+  flux-system/                       # Flux-generated bootstrap manifests only
+  infrastructure.yaml                # Reconciles infrastructure before apps
+  apps.yaml                          # Reconciles application overlays
+infrastructure/controllers/cert-manager/
+  base/                              # Shared cert-manager resources
+  production/                        # Production overlay
+apps/<application>/
+  base/                              # Application manifests
+  production/                        # Environment-specific overlay
 ```
 
-## Onboarding Instructions
+## Applications
 
-### 1. Prerequisites
-- FluxCD installed on your Kubernetes cluster
-- Access to this Git repository
-- `kubectl` access to your cluster
+The following application folders are ready for their manifests:
 
-### 2. Push the Repository
-Initialize and push this repository to your remote:
+- `ykp-dashboard`
+- `ykp-auth`
+- `ykp-catalog`
+- `ykp-shell`
+- `ykp-api`
 
-```bash
-git init
-git add .
-git commit -m "Initial commit for FluxCD GitOps setup"
-git remote add origin <your-repo-url>
-git push -u origin main
-```
+Add Kubernetes resources to an application's `base/` directory and list them in its `base/kustomization.yaml`. Put environment-specific patches and configuration in its `production/` directory.
 
-### 3. Add the Repository as a FluxCD Source
-Apply the `GitRepository` manifest (see `infrastructure/base/sources/gitrepo.yaml`) or create your own:
+## Flux source
 
-```bash
-kubectl apply -f infrastructure/base/sources/gitrepo.yaml
-```
+Flux syncs the `ykp-dev` branch from `https://github.com/su-mangale/fluxcd.git`. The production root Kustomization applies Flux itself, then cert-manager, then the application layer through the explicit `dependsOn` relationship.
 
-Or manually:
+## Certificate issuance
 
-```bash
-cat <<EOF | kubectl apply -f -
-apiVersion: source.toolkit.fluxcd.io/v1beta2
-kind: GitRepository
-metadata:
-  name: fluxcd
-  namespace: flux-system
-spec:
-  interval: 1m0s
-  url: <REPO_URL>
-  ref:
-    branch: main
-EOF
-```
-
-### 4. Deploy Cluster Kustomizations
-Apply the Kustomization for your environment (production):
-
-```bash
-kubectl apply -k clusters/production
-```
-
-### 5. Verify FluxCD Sync
-Check that resources are being reconciled:
-
-```bash
-kubectl get kustomizations -A
-kubectl get helmreleases -A
-```
-
----
-
-## Notes
-- All application and infrastructure manifests are grouped by component under `apps/base/` and `infrastructure/base/`.
-- Overlays for production allow for environment-specific configuration and patches.
-- Only Kustomization manifests should exist in `clusters/production`.
-- Secrets (e.g., GitHub PAT) should be managed securely and never committed to the repo.
-
-For more details, see the comments in each directory and manifest.
+The retained Let's Encrypt issuers use Traefik for HTTP-01 challenges. Install/configure an ingress controller using the `traefik` ingress class, or update the issuer solver before requesting certificates.
