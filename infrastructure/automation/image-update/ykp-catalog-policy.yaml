@@ -1,0 +1,16 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: ykp-catalog
+  namespace: ykp-system
+  labels:
+    app.kubernetes.io/part-of: ykp
+spec:
+  imageRepositoryRef:
+    name: ykp-catalog
+  filterTags:
+    pattern: '^(?P<timestamp>[0-9]{8}T[0-9]{6}Z)-sha-[0-9a-f]{7,40}$'
+    extract: '$timestamp'
+  policy:
+    alphabetical:
+      order: asc

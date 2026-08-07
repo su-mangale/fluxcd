@@ -1,0 +1,8 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: ykp-auth
+  namespace: ykp-system
+spec:
+  image: ghcr.io/su-mangale/ykp-auth
+  interval: 1m

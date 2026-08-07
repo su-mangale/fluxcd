@@ -1,0 +1,27 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageUpdateAutomation
+metadata:
+  name: ykp-images
+  namespace: flux-system
+spec:
+  interval: 5m
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
+  git:
+    checkout:
+      ref:
+        branch: ykp-dev
+    commit:
+      author:
+        name: Flux Image Automation
+        email: flux@users.noreply.github.com
+      messageTemplate: "chore(images): update YKP application images"
+    push:
+      branch: ykp-dev
+  update:
+    path: ./apps
+  policySelector:
+    matchLabels:
+      app.kubernetes.io/part-of: ykp

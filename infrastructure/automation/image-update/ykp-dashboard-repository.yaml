@@ -1,0 +1,8 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: ykp-dashboard
+  namespace: ykp-system
+spec:
+  image: ghcr.io/su-mangale/ykp-dashboard
+  interval: 1m

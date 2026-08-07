@@ -1,0 +1,14 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ykp-dashboard-repository.yaml
+  - ykp-dashboard-policy.yaml
+  - ykp-auth-repository.yaml
+  - ykp-auth-policy.yaml
+  - ykp-catalog-repository.yaml
+  - ykp-catalog-policy.yaml
+  - ykp-shell-repository.yaml
+  - ykp-shell-policy.yaml
+  - ykp-api-repository.yaml
+  - ykp-api-policy.yaml
+  - automation.yaml
