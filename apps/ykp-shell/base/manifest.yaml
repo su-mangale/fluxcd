@@ -27,6 +27,8 @@ spec:
           env:
             - name: NODE_ENV
               value: production
+            - name: NEXT_PUBLIC_BACKEND_URL
+              value: http://ykp-api:8080
             # Point routing proxies to internal k8s ClusterIP services
             - name: AUTH_URL
               value: http://ykp-auth:3001
@@ -43,13 +45,13 @@ spec:
               memory: 256Mi
           readinessProbe:
             httpGet:
-              path: /
+              path: /healthz
               port: 3000
             initialDelaySeconds: 10
             periodSeconds: 10
           livenessProbe:
             httpGet:
-              path: /
+              path: /healthz
               port: 3000
             initialDelaySeconds: 15
             periodSeconds: 20

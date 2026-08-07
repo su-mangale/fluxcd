@@ -38,13 +38,13 @@ spec:
               memory: 256Mi
           readinessProbe:
             httpGet:
-              path: /dashboard
+              path: /healthz
               port: 3002
             initialDelaySeconds: 10
             periodSeconds: 10
           livenessProbe:
             httpGet:
-              path: /dashboard
+              path: /healthz
               port: 3002
             initialDelaySeconds: 15
             periodSeconds: 20
