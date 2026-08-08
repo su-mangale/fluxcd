@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: auth
-          image: ghcr.io/su-mangale/ykp-auth:20260807T212959Z-sha-44dd6d3 # {"$imagepolicy": "ykp-system:ykp-auth"}
+          image: ghcr.io/su-mangale/ykp-auth:20260808T044514Z-sha-c1b0093 # {"$imagepolicy": "ykp-system:ykp-auth"}
           imagePullPolicy: Always
           ports:
             - containerPort: 3001
