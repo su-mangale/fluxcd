@@ -1,23 +1,19 @@
 # FluxCD GitOps Repository
 
-This branch uses an environment-first FluxCD layout for the `production` cluster.
+This repository manages the production Kubernetes cluster with FluxCD.
 
 ```text
-clusters/production/                 # Flux reconciliation entrypoint
-  flux-system/                       # Flux-generated bootstrap manifests only
-  infrastructure.yaml                # Reconciles infrastructure before apps
-  apps.yaml                          # Reconciles application overlays
-infrastructure/controllers/cert-manager/
-  base/                              # Shared cert-manager resources
-  production/                        # Production overlay
-apps/<application>/
-  base/                              # Application manifests
-  production/                        # Environment-specific overlay
+apps/
+  base/                 # Shared application manifests, one directory per app
+  production/           # Production application aggregation and patches
+infrastructure/
+  base/                 # Shared namespaces and Flux image automation
+  production/           # Production infrastructure aggregation
+clusters/
+  production/           # Flux bootstrap and production reconciliation entrypoint
 ```
 
 ## Applications
-
-The following application folders are ready for their manifests:
 
 - `ykp-dashboard`
 - `ykp-auth`
@@ -25,12 +21,12 @@ The following application folders are ready for their manifests:
 - `ykp-shell`
 - `ykp-api`
 
-Add Kubernetes resources to an application's `base/` directory and list them in its `base/kustomization.yaml`. Put environment-specific patches and configuration in its `production/` directory.
+Application manifests live in `apps/base/<application>/`. Add production-specific changes in `apps/production/`.
 
-## Flux source
+Infrastructure is shared from `infrastructure/base/` and enabled for production from `infrastructure/production/`.
 
-Flux syncs the `ykp-dev` branch from `https://github.com/su-mangale/fluxcd.git`. The production root Kustomization applies Flux itself, then cert-manager, then the application layer through the explicit `dependsOn` relationship.
+Flux syncs the `ykp-dev` branch from `https://github.com/su-mangale/fluxcd.git` and starts at `clusters/production/`.
 
-## Certificate issuance
+## Image automation
 
-The retained Let's Encrypt issuers use Traefik for HTTP-01 challenges. Install/configure an ingress controller using the `traefik` ingress class, or update the issuer solver before requesting certificates.
+Flux scans the YKP images in GHCR and commits selected image updates to `ykp-dev`. Application image fields must retain their inline `$imagepolicy` marker.

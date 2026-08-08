@@ -1,8 +1,8 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - ../ykp-dashboard/production
-  - ../ykp-auth/production
-  - ../ykp-catalog/production
-  - ../ykp-shell/production
-  - ../ykp-api/production
+  - ../base/ykp-dashboard
+  - ../base/ykp-auth
+  - ../base/ykp-catalog
+  - ../base/ykp-shell
+  - ../base/ykp-api
