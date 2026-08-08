@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: shell
-          image: ghcr.io/su-mangale/ykp-shell:sha-d5ce0eb # {"$imagepolicy": "ykp-system:ykp-shell:tag"}
+          image: ghcr.io/su-mangale/ykp-shell:20260807T212954Z-sha-44dd6d3 # {"$imagepolicy": "ykp-system:ykp-shell"}
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
