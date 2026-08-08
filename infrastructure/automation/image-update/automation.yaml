@@ -2,7 +2,7 @@ apiVersion: image.toolkit.fluxcd.io/v1
 kind: ImageUpdateAutomation
 metadata:
   name: ykp-images
-  namespace: flux-system
+  namespace: ykp-system
 spec:
   interval: 5m
   sourceRef:
