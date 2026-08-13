@@ -3,6 +3,8 @@ kind: ImagePolicy
 metadata:
   name: ykp-k8s-dashboard
   namespace: ykp-system
+  labels:
+    app.kubernetes.io/part-of: ykp
 spec:
   imageRepositoryRef:
     name: ykp-k8s-dashboard
