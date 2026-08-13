@@ -6,6 +6,9 @@ metadata:
 spec:
   imageRepositoryRef:
     name: ykp-k8s-dashboard
+  filterTags:
+    pattern: '^(?P<timestamp>[0-9]{8}T[0-9]{6}Z)-sha-[0-9a-f]{7,40}$'
+    extract: '$timestamp'
   policy:
     alphabetical:
       order: asc
