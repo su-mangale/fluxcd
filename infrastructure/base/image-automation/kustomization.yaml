@@ -11,4 +11,6 @@ resources:
   - ykp-shell-policy.yaml
   - ykp-api-repository.yaml
   - ykp-api-policy.yaml
+  - ykp-k8s-dashboard-repository.yaml
+  - ykp-k8s-dashboard-policy.yaml
   - automation.yaml
