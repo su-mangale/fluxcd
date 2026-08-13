@@ -6,5 +6,3 @@ metadata:
 spec:
   image: ghcr.io/su-mangale/ykp-k8s-dashboard
   interval: 1m
-  secretRef:
-    name: ghcr-secret
