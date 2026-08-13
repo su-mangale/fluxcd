@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: dashboard
-          image: ghcr.io/su-mangale/ykp-dashboard:20260813T113221Z-sha-c38f1a1 # {"$imagepolicy": "ykp-system:ykp-dashboard"}
+          image: ghcr.io/su-mangale/ykp-dashboard:20260813T145031Z-sha-1105f45 # {"$imagepolicy": "ykp-system:ykp-dashboard"}
           imagePullPolicy: Always
           ports:
             - containerPort: 3002
