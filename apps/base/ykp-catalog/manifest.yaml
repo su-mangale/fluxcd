@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: catalog
-          image: ghcr.io/su-mangale/ykp-catalog:20260813T094437Z-sha-2b6b7bc # {"$imagepolicy": "ykp-system:ykp-catalog"}
+          image: ghcr.io/su-mangale/ykp-catalog:20260813T100804Z-sha-7686b69 # {"$imagepolicy": "ykp-system:ykp-catalog"}
           imagePullPolicy: Always
           ports:
             - containerPort: 3003
