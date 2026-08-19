@@ -21,6 +21,20 @@ spec:
                 name: ykp-api
                 port:
                   number: 8080
+          - path: /openapi
+            pathType: Prefix
+            backend:
+              service:
+                name: ykp-api
+                port:
+                  number: 8080
+          - path: /healthz
+            pathType: Prefix
+            backend:
+              service:
+                name: ykp-api
+                port:
+                  number: 8080
           - path: /
             pathType: Prefix
             backend:
