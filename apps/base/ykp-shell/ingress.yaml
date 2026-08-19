@@ -21,7 +21,14 @@ spec:
                 name: ykp-api
                 port:
                   number: 8080
-          - path: /openapi
+          - path: /openapi.yaml
+            pathType: Prefix
+            backend:
+              service:
+                name: ykp-api
+                port:
+                  number: 8080
+          - path: /openapi.json
             pathType: Prefix
             backend:
               service:
