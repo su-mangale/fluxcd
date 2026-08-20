@@ -1,0 +1,11 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# Core Platform Custom Resource Definitions (CRDs)
+# Add any new platform CRDs to the resources list below.
+resources:
+  # Catalog & Application Management
+  - catalog.ykp.io_platformapps.yaml
+  # Future CRDs can be added here, e.g.:
+  # - catalog.ykp.io_platformcatalogs.yaml
+  # - core.ykp.io_tenants.yaml
