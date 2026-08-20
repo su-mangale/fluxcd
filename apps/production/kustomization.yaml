@@ -7,3 +7,4 @@ resources:
   - ../base/ykp-shell
   - ../base/ykp-api
   - ../base/ykp-k8s-dashboard
+  - ../base/minimal-git-server
