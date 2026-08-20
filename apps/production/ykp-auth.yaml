@@ -1,0 +1,21 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: ykp-auth
+  namespace: flux-system
+spec:
+  targetNamespace: ykp-system
+  interval: 5m
+  retryInterval: 1m
+  timeout: 3m
+  prune: true
+  wait: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  path: ./apps/base/ykp-auth
+  healthChecks:
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: ykp-auth
+      namespace: ykp-system
