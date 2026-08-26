@@ -4,13 +4,12 @@ metadata:
   name: ykp-ingress
   namespace: ykp-system
   annotations:
-    kubernetes.io/ingress.class: nginx
     # Keep interactive terminal WebSocket connections alive while idle.
     nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
     nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
     nginx.ingress.kubernetes.io/websocket-services: ykp-api
 spec:
-  ingressClassName: nginx
+  ingressClassName: traefik
   rules:
     - http:
         paths:
