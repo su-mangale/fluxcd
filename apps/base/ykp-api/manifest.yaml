@@ -37,7 +37,7 @@ spec:
       serviceAccountName: ykp-api-sa
       containers:
         - name: api
-          image: ghcr.io/su-mangale/ykp-api:20260820T183201Z-sha-8271c68 # {"$imagepolicy": "ykp-system:ykp-api"}
+          image: ghcr.io/su-mangale/ykp-api:20260826T175649Z-sha-c641bf4 # {"$imagepolicy": "ykp-system:ykp-api"}
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
