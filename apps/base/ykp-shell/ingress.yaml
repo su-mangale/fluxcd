@@ -11,7 +11,8 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-    - http:
+    - host: ykp.localhost
+      http:
         paths:
           - path: /docs
             pathType: Prefix
