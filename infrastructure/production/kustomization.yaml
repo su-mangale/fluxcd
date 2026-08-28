@@ -4,3 +4,4 @@ resources:
   - ../base/crds
   - ../base/namespaces/ykp-system
   - ../base/image-automation
+  - ../base/metrics-server
