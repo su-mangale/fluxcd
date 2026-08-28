@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: idp
-          image: ghcr.io/su-mangale/ykp-idp:20260828T070431Z-sha-f3ad020 # {"$imagepolicy": "ykp-system:ykp-idp"}
+          image: ghcr.io/su-mangale/ykp-idp:20260828T060946Z-sha-4ab8040 # {"$imagepolicy": "ykp-system:ykp-idp"}
           imagePullPolicy: Always
           ports:
             - containerPort: 3006
