@@ -17,4 +17,6 @@ resources:
   - ykp-audit-policy.yaml
   - ykp-idp-repository.yaml
   - ykp-idp-policy.yaml
+  - ykp-cloud-providers-repository.yaml
+  - ykp-cloud-providers-policy.yaml
   - automation.yaml

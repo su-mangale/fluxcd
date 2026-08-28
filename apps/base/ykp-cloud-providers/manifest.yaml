@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ykp-cloud-providers
+  namespace: ykp-system
+  labels:
+    app: ykp-cloud-providers
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ykp-cloud-providers
+  template:
+    metadata:
+      labels:
+        app: ykp-cloud-providers
+    spec:
+      containers:
+        - name: cloud-providers
+          image: ghcr.io/su-mangale/ykp-cloud-providers:20260827T021506Z-sha-be2e208 # {"$imagepolicy": "ykp-system:ykp-cloud-providers"}
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3007
+          env:
+            - name: NODE_ENV
+              value: production
+            - name: NEXT_PUBLIC_BACKEND_URL
+              value: http://ykp-api:8080
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 256Mi
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 3007
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 3007
+            initialDelaySeconds: 15
+            periodSeconds: 20
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ykp-cloud-providers
+  namespace: ykp-system
+spec:
+  selector:
+    app: ykp-cloud-providers
+  ports:
+    - protocol: TCP
+      port: 3007
+      targetPort: 3007

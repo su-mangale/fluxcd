@@ -9,4 +9,5 @@ resources:
   - ykp-k8s-dashboard.yaml
   - ykp-audit.yaml
   - ykp-idp.yaml
+  - ykp-cloud-providers.yaml
   - ykp-shell.yaml

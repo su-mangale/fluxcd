@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: shell
-          image: ghcr.io/su-mangale/ykp-shell:20260828T060948Z-sha-4ab8040 # {"$imagepolicy": "ykp-system:ykp-shell"}
+          image: ghcr.io/su-mangale/ykp-shell:20260827T021503Z-sha-be2e208 # {"$imagepolicy": "ykp-system:ykp-shell"}
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
@@ -39,6 +39,8 @@ spec:
               value: http://ykp-audit:3005
             - name: IDP_URL
               value: http://ykp-idp:3006
+            - name: CLOUD_PROVIDERS_URL
+              value: http://ykp-cloud-providers:3007
           resources:
             requests:
               cpu: 100m
