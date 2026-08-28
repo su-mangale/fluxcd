@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: cloud-providers
-          image: ghcr.io/su-mangale/ykp-cloud-providers:20260827T021506Z-sha-be2e208 # {"$imagepolicy": "ykp-system:ykp-cloud-providers"}
+          image: ghcr.io/su-mangale/ykp-cloud-providers:20260828T070430Z-sha-f3ad020 # {"$imagepolicy": "ykp-system:ykp-cloud-providers"}
           imagePullPolicy: Always
           ports:
             - containerPort: 3007
