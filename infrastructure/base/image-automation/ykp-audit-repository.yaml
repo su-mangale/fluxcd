@@ -1,0 +1,8 @@
+apiVersion: image.toolkit.fluxcd.io/v1
+kind: ImageRepository
+metadata:
+  name: ykp-audit
+  namespace: ykp-system
+spec:
+  image: ghcr.io/su-mangale/ykp-audit
+  interval: 1m

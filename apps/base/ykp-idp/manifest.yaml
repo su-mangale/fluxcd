@@ -1,44 +1,31 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ykp-shell
+  name: ykp-idp
   namespace: ykp-system
   labels:
-    app: ykp-shell
+    app: ykp-idp
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ykp-shell
+      app: ykp-idp
   template:
     metadata:
       labels:
-        app: ykp-shell
+        app: ykp-idp
     spec:
       containers:
-        - name: shell
-          image: ghcr.io/su-mangale/ykp-shell:20260827T021503Z-sha-be2e208 # {"$imagepolicy": "ykp-system:ykp-shell"}
+        - name: idp
+          image: ghcr.io/su-mangale/ykp-idp:20260827T021506Z-sha-be2e208 # {"$imagepolicy": "ykp-system:ykp-idp"}
           imagePullPolicy: Always
           ports:
-            - containerPort: 3000
+            - containerPort: 3006
           env:
             - name: NODE_ENV
               value: production
             - name: NEXT_PUBLIC_BACKEND_URL
               value: http://ykp-api:8080
-            # Point routing proxies to internal k8s ClusterIP services
-            - name: AUTH_URL
-              value: http://ykp-auth:3001
-            - name: DASHBOARD_URL
-              value: http://ykp-dashboard:3002
-            - name: CATALOG_URL
-              value: http://ykp-catalog:3003
-            - name: K8S_DASHBOARD_URL
-              value: http://ykp-k8s-dashboard:3004
-            - name: AUDIT_URL
-              value: http://ykp-audit:3005
-            - name: IDP_URL
-              value: http://ykp-idp:3006
           resources:
             requests:
               cpu: 100m
@@ -49,25 +36,25 @@ spec:
           readinessProbe:
             httpGet:
               path: /healthz
-              port: 3000
+              port: 3006
             initialDelaySeconds: 10
             periodSeconds: 10
           livenessProbe:
             httpGet:
               path: /healthz
-              port: 3000
+              port: 3006
             initialDelaySeconds: 15
             periodSeconds: 20
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: ykp-shell
+  name: ykp-idp
   namespace: ykp-system
 spec:
   selector:
-    app: ykp-shell
+    app: ykp-idp
   ports:
     - protocol: TCP
-      port: 3000
-      targetPort: 3000
+      port: 3006
+      targetPort: 3006

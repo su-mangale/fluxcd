@@ -7,4 +7,6 @@ resources:
   - ykp-catalog.yaml
   - ykp-dashboard.yaml
   - ykp-k8s-dashboard.yaml
+  - ykp-audit.yaml
+  - ykp-idp.yaml
   - ykp-shell.yaml

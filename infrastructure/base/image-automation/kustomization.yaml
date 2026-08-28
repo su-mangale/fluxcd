@@ -13,4 +13,8 @@ resources:
   - ykp-api-policy.yaml
   - ykp-k8s-dashboard-repository.yaml
   - ykp-k8s-dashboard-policy.yaml
+  - ykp-audit-repository.yaml
+  - ykp-audit-policy.yaml
+  - ykp-idp-repository.yaml
+  - ykp-idp-policy.yaml
   - automation.yaml
