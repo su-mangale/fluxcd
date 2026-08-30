@@ -5,3 +5,4 @@ resources:
   - ../base/namespaces/ykp-system
   - ../base/image-automation
   - ../base/metrics-server
+  - ../base/gitea
