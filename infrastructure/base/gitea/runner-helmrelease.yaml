@@ -1,14 +1,14 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: gitea
+  name: gitea-actions-runner
   namespace: gitea
 spec:
-  releaseName: gitea
+  releaseName: gitea-actions-runner
   targetNamespace: gitea
   chart:
     spec:
-      chart: gitea
+      chart: actions
       sourceRef:
         kind: HelmRepository
         name: gitea-charts
@@ -21,7 +21,6 @@ spec:
     remediation:
       retries: 3
   values:
-    gitea:
-      config:
-        actions:
-          ENABLED: true
+    giteaRootURL: "http://gitea-http.gitea.svc.cluster.local:3000"
+    existingSecret: runner-secret
+    existingSecretKey: runner-token

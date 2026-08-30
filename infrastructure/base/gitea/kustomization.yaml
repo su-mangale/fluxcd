@@ -5,3 +5,5 @@ resources:
   - helmrepo.yaml
   - helmrelease.yaml
   - ingress.yaml
+  - runner-secret.yaml
+  - runner-helmrelease.yaml
