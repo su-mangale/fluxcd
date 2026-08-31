@@ -20,20 +20,13 @@ data:
       "panels": [
         {
           "collapsed": false,
-          "gridPos": {
-            "h": 8,
-            "w": 6,
-            "x": 0,
-            "y": 0
-          },
+          "gridPos": { "h": 6, "w": 6, "x": 0, "y": 0 },
           "id": 1,
           "title": "GPU Usage %",
           "type": "gauge",
           "fieldConfig": {
             "defaults": {
-              "color": {
-                "mode": "thresholds"
-              },
+              "color": { "mode": "thresholds" },
               "max": 100,
               "min": 0,
               "thresholds": {
@@ -50,10 +43,7 @@ data:
           },
           "targets": [
             {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "Prometheus"
-              },
+              "datasource": { "type": "prometheus", "uid": "Prometheus" },
               "expr": "macmon_gpu_usage_ratio * 100 or macmon_gpu_active_ratio * 100",
               "legendFormat": "GPU Usage",
               "refId": "A"
@@ -62,60 +52,13 @@ data:
         },
         {
           "collapsed": false,
-          "gridPos": {
-            "h": 8,
-            "w": 6,
-            "x": 6,
-            "y": 0
-          },
+          "gridPos": { "h": 6, "w": 6, "x": 6, "y": 0 },
           "id": 2,
-          "title": "Apple Neural Engine (ANE) Power (W)",
+          "title": "GPU Power Draw (W)",
           "type": "stat",
           "fieldConfig": {
             "defaults": {
-              "color": {
-                "mode": "thresholds"
-              },
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  { "color": "purple", "value": null },
-                  { "color": "yellow", "value": 5 },
-                  { "color": "red", "value": 15 }
-                ]
-              },
-              "unit": "watt"
-            },
-            "overrides": []
-          },
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "Prometheus"
-              },
-              "expr": "macmon_ane_power_watts",
-              "legendFormat": "ANE Power",
-              "refId": "A"
-            }
-          ]
-        },
-        {
-          "collapsed": false,
-          "gridPos": {
-            "h": 8,
-            "w": 6,
-            "x": 12,
-            "y": 0
-          },
-          "id": 3,
-          "title": "GPU Power Draw (Watts)",
-          "type": "stat",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "thresholds"
-              },
+              "color": { "mode": "thresholds" },
               "thresholds": {
                 "mode": "absolute",
                 "steps": [
@@ -130,10 +73,7 @@ data:
           },
           "targets": [
             {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "Prometheus"
-              },
+              "datasource": { "type": "prometheus", "uid": "Prometheus" },
               "expr": "macmon_gpu_power_watts",
               "legendFormat": "GPU Power",
               "refId": "A"
@@ -142,30 +82,20 @@ data:
         },
         {
           "collapsed": false,
-          "gridPos": {
-            "h": 8,
-            "w": 6,
-            "x": 18,
-            "y": 0
-          },
-          "id": 4,
+          "gridPos": { "h": 6, "w": 6, "x": 12, "y": 0 },
+          "id": 3,
           "title": "GPU Frequency (MHz)",
           "type": "stat",
           "fieldConfig": {
             "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
+              "color": { "mode": "palette-classic" },
               "unit": "mhz"
             },
             "overrides": []
           },
           "targets": [
             {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "Prometheus"
-              },
+              "datasource": { "type": "prometheus", "uid": "Prometheus" },
               "expr": "macmon_gpu_freq_mhz",
               "legendFormat": "GPU Frequency",
               "refId": "A"
@@ -174,20 +104,20 @@ data:
         },
         {
           "collapsed": false,
-          "gridPos": {
-            "h": 10,
-            "w": 12,
-            "x": 0,
-            "y": 8
-          },
-          "id": 5,
-          "title": "Apple Silicon GPU, CPU & System Power Draw (W)",
-          "type": "timeseries",
+          "gridPos": { "h": 6, "w": 6, "x": 18, "y": 0 },
+          "id": 4,
+          "title": "Apple Neural Engine (ANE) Power (W)",
+          "type": "stat",
           "fieldConfig": {
             "defaults": {
-              "custom": {
-                "drawStyle": "line",
-                "lineInterpolation": "smooth"
+              "color": { "mode": "thresholds" },
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  { "color": "purple", "value": null },
+                  { "color": "yellow", "value": 5 },
+                  { "color": "red", "value": 15 }
+                ]
               },
               "unit": "watt"
             },
@@ -195,72 +125,244 @@ data:
           },
           "targets": [
             {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "Prometheus"
+              "datasource": { "type": "prometheus", "uid": "Prometheus" },
+              "expr": "macmon_ane_power_watts",
+              "legendFormat": "ANE Power",
+              "refId": "A"
+            }
+          ]
+        },
+        {
+          "collapsed": false,
+          "gridPos": { "h": 6, "w": 6, "x": 0, "y": 6 },
+          "id": 5,
+          "title": "Darwin Load Average (1m)",
+          "type": "stat",
+          "fieldConfig": {
+            "defaults": {
+              "color": { "mode": "thresholds" },
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  { "color": "green", "value": null },
+                  { "color": "orange", "value": 5 },
+                  { "color": "red", "value": 10 }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "targets": [
+            {
+              "datasource": { "type": "prometheus", "uid": "Prometheus" },
+              "expr": "node_load1",
+              "legendFormat": "Load 1m",
+              "refId": "A"
+            }
+          ]
+        },
+        {
+          "collapsed": false,
+          "gridPos": { "h": 6, "w": 6, "x": 6, "y": 6 },
+          "id": 6,
+          "title": "APFS Storage Used %",
+          "type": "gauge",
+          "fieldConfig": {
+            "defaults": {
+              "color": { "mode": "thresholds" },
+              "max": 100,
+              "min": 0,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  { "color": "blue", "value": null },
+                  { "color": "yellow", "value": 80 },
+                  { "color": "red", "value": 90 }
+                ]
               },
-              "expr": "macmon_gpu_power_watts",
-              "legendFormat": "GPU Power",
+              "unit": "percent"
+            },
+            "overrides": []
+          },
+          "targets": [
+            {
+              "datasource": { "type": "prometheus", "uid": "Prometheus" },
+              "expr": "(1 - (node_filesystem_free_bytes{mountpoint='/'} / node_filesystem_size_bytes{mountpoint='/'})) * 100",
+              "legendFormat": "Storage Usage",
+              "refId": "A"
+            }
+          ]
+        },
+        {
+          "collapsed": false,
+          "gridPos": { "h": 6, "w": 6, "x": 12, "y": 6 },
+          "id": 7,
+          "title": "Available Storage (GB)",
+          "type": "stat",
+          "fieldConfig": {
+            "defaults": {
+              "color": { "mode": "palette-classic" },
+              "unit": "decgbytes"
+            },
+            "overrides": []
+          },
+          "targets": [
+            {
+              "datasource": { "type": "prometheus", "uid": "Prometheus" },
+              "expr": "node_filesystem_free_bytes{mountpoint='/'} / 1073741824",
+              "legendFormat": "Free Disk Space",
+              "refId": "A"
+            }
+          ]
+        },
+        {
+          "collapsed": false,
+          "gridPos": { "h": 6, "w": 6, "x": 18, "y": 6 },
+          "id": 8,
+          "title": "Active RAM (GB)",
+          "type": "stat",
+          "fieldConfig": {
+            "defaults": {
+              "color": { "mode": "palette-classic" },
+              "unit": "decgbytes"
+            },
+            "overrides": []
+          },
+          "targets": [
+            {
+              "datasource": { "type": "prometheus", "uid": "Prometheus" },
+              "expr": "node_memory_active_bytes / 1073741824",
+              "legendFormat": "Active RAM",
+              "refId": "A"
+            }
+          ]
+        },
+        {
+          "collapsed": false,
+          "gridPos": { "h": 8, "w": 12, "x": 0, "y": 12 },
+          "id": 9,
+          "title": "Apple Silicon Power Consumption Breakdown (W)",
+          "type": "timeseries",
+          "fieldConfig": {
+            "defaults": {
+              "custom": { "drawStyle": "line", "lineInterpolation": "smooth" },
+              "unit": "watt"
+            },
+            "overrides": []
+          },
+          "targets": [
+            {
+              "datasource": { "type": "prometheus", "uid": "Prometheus" },
+              "expr": "macmon_sys_power_watts",
+              "legendFormat": "Total System Power",
               "refId": "A"
             },
             {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "Prometheus"
-              },
+              "datasource": { "type": "prometheus", "uid": "Prometheus" },
               "expr": "macmon_cpu_power_watts",
               "legendFormat": "CPU Power",
               "refId": "B"
             },
             {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "Prometheus"
-              },
-              "expr": "macmon_sys_power_watts",
-              "legendFormat": "System Power",
+              "datasource": { "type": "prometheus", "uid": "Prometheus" },
+              "expr": "macmon_gpu_power_watts",
+              "legendFormat": "GPU Power",
+              "refId": "C"
+            },
+            {
+              "datasource": { "type": "prometheus", "uid": "Prometheus" },
+              "expr": "macmon_ram_power_watts",
+              "legendFormat": "RAM Power",
+              "refId": "D"
+            }
+          ]
+        },
+        {
+          "collapsed": false,
+          "gridPos": { "h": 8, "w": 12, "x": 12, "y": 12 },
+          "id": 10,
+          "title": "CPU & GPU Frequencies (MHz)",
+          "type": "timeseries",
+          "fieldConfig": {
+            "defaults": {
+              "custom": { "drawStyle": "line", "lineInterpolation": "smooth" },
+              "unit": "mhz"
+            },
+            "overrides": []
+          },
+          "targets": [
+            {
+              "datasource": { "type": "prometheus", "uid": "Prometheus" },
+              "expr": "macmon_pcpu_freq_mhz",
+              "legendFormat": "P-Core Frequency",
+              "refId": "A"
+            },
+            {
+              "datasource": { "type": "prometheus", "uid": "Prometheus" },
+              "expr": "macmon_ecpu_freq_mhz",
+              "legendFormat": "E-Core Frequency",
+              "refId": "B"
+            },
+            {
+              "datasource": { "type": "prometheus", "uid": "Prometheus" },
+              "expr": "macmon_gpu_freq_mhz",
+              "legendFormat": "GPU Frequency",
               "refId": "C"
             }
           ]
         },
         {
           "collapsed": false,
-          "gridPos": {
-            "h": 10,
-            "w": 12,
-            "x": 12,
-            "y": 8
-          },
-          "id": 6,
-          "title": "Apple Silicon Temperature (°C)",
+          "gridPos": { "h": 8, "w": 12, "x": 0, "y": 20 },
+          "id": 11,
+          "title": "NVMe Disk I/O Throughput (MB/s)",
           "type": "timeseries",
           "fieldConfig": {
             "defaults": {
-              "custom": {
-                "drawStyle": "line",
-                "lineInterpolation": "smooth"
-              },
-              "unit": "celsius"
+              "custom": { "drawStyle": "line", "lineInterpolation": "smooth" },
+              "unit": "Bps"
             },
             "overrides": []
           },
           "targets": [
             {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "Prometheus"
-              },
-              "expr": "macmon_gpu_temp_celsius",
-              "legendFormat": "GPU Temp",
+              "datasource": { "type": "prometheus", "uid": "Prometheus" },
+              "expr": "rate(node_disk_read_bytes_total[1m])",
+              "legendFormat": "Disk Read (Bytes/s)",
               "refId": "A"
             },
             {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "Prometheus"
-              },
-              "expr": "macmon_cpu_temp_celsius",
-              "legendFormat": "CPU Temp",
+              "datasource": { "type": "prometheus", "uid": "Prometheus" },
+              "expr": "rate(node_disk_written_bytes_total[1m])",
+              "legendFormat": "Disk Write (Bytes/s)",
+              "refId": "B"
+            }
+          ]
+        },
+        {
+          "collapsed": false,
+          "gridPos": { "h": 8, "w": 12, "x": 12, "y": 20 },
+          "id": 12,
+          "title": "Network Bandwidth (Bytes/s)",
+          "type": "timeseries",
+          "fieldConfig": {
+            "defaults": {
+              "custom": { "drawStyle": "line", "lineInterpolation": "smooth" },
+              "unit": "Bps"
+            },
+            "overrides": []
+          },
+          "targets": [
+            {
+              "datasource": { "type": "prometheus", "uid": "Prometheus" },
+              "expr": "sum(rate(node_network_receive_bytes_total{device!='lo0'}[1m]))",
+              "legendFormat": "Download (RX)",
+              "refId": "A"
+            },
+            {
+              "datasource": { "type": "prometheus", "uid": "Prometheus" },
+              "expr": "sum(rate(node_network_transmit_bytes_total{device!='lo0'}[1m]))",
+              "legendFormat": "Upload (TX)",
               "refId": "B"
             }
           ]
@@ -269,14 +371,11 @@ data:
       "refresh": "5s",
       "schemaVersion": 38,
       "style": "dark",
-      "tags": ["macmon", "apple-silicon", "gpu"],
-      "time": {
-        "from": "now-15m",
-        "to": "now"
-      },
+      "tags": ["macmon", "node_exporter", "apple-silicon", "macos"],
+      "time": { "from": "now-15m", "to": "now" },
       "timepicker": {},
       "timezone": "browser",
-      "title": "Apple Silicon M4 Hardware Metrics (macmon)",
+      "title": "macOS Full Observability (Apple Silicon M4 + OS Metrics)",
       "uid": "macmon-apple-silicon-metrics",
-      "version": 2
+      "version": 3
     }

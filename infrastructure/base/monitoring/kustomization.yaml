@@ -7,5 +7,6 @@ resources:
   - prometheus-helmrelease.yaml
   - grafana-helmrelease.yaml
   - macmon-host-endpoint.yaml
+  - node-exporter-host-endpoint.yaml
   - grafana-dashboard-configmap.yaml
   - ingress.yaml
