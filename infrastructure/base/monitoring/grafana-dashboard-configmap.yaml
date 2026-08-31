@@ -54,7 +54,7 @@ data:
                 "type": "prometheus",
                 "uid": "Prometheus"
               },
-              "expr": "mac_gpu_usage_percent or mac_gpu_usage or mac_gpu_percent",
+              "expr": "macmon_gpu_usage_ratio * 100 or macmon_gpu_active_ratio * 100",
               "legendFormat": "GPU Usage",
               "refId": "A"
             }
@@ -69,24 +69,22 @@ data:
             "y": 0
           },
           "id": 2,
-          "title": "Apple Neural Engine (ANE) Load %",
-          "type": "gauge",
+          "title": "Apple Neural Engine (ANE) Power (W)",
+          "type": "stat",
           "fieldConfig": {
             "defaults": {
               "color": {
                 "mode": "thresholds"
               },
-              "max": 100,
-              "min": 0,
               "thresholds": {
                 "mode": "absolute",
                 "steps": [
                   { "color": "purple", "value": null },
-                  { "color": "yellow", "value": 70 },
-                  { "color": "red", "value": 90 }
+                  { "color": "yellow", "value": 5 },
+                  { "color": "red", "value": 15 }
                 ]
               },
-              "unit": "percent"
+              "unit": "watt"
             },
             "overrides": []
           },
@@ -96,8 +94,8 @@ data:
                 "type": "prometheus",
                 "uid": "Prometheus"
               },
-              "expr": "mac_ane_usage_percent or mac_ane_usage or mac_ane_power_watts",
-              "legendFormat": "ANE Usage",
+              "expr": "macmon_ane_power_watts",
+              "legendFormat": "ANE Power",
               "refId": "A"
             }
           ]
@@ -122,8 +120,8 @@ data:
                 "mode": "absolute",
                 "steps": [
                   { "color": "blue", "value": null },
-                  { "color": "orange", "value": 20 },
-                  { "color": "red", "value": 40 }
+                  { "color": "orange", "value": 10 },
+                  { "color": "red", "value": 30 }
                 ]
               },
               "unit": "watt"
@@ -136,7 +134,7 @@ data:
                 "type": "prometheus",
                 "uid": "Prometheus"
               },
-              "expr": "mac_gpu_power_watts or mac_gpu_power",
+              "expr": "macmon_gpu_power_watts",
               "legendFormat": "GPU Power",
               "refId": "A"
             }
@@ -168,7 +166,7 @@ data:
                 "type": "prometheus",
                 "uid": "Prometheus"
               },
-              "expr": "mac_gpu_frequency_mhz or mac_gpu_freq_mhz or mac_gpu_frequency",
+              "expr": "macmon_gpu_freq_mhz",
               "legendFormat": "GPU Frequency",
               "refId": "A"
             }
@@ -183,7 +181,7 @@ data:
             "y": 8
           },
           "id": 5,
-          "title": "Apple Silicon GPU & CPU Power Draw (W)",
+          "title": "Apple Silicon GPU, CPU & System Power Draw (W)",
           "type": "timeseries",
           "fieldConfig": {
             "defaults": {
@@ -201,7 +199,7 @@ data:
                 "type": "prometheus",
                 "uid": "Prometheus"
               },
-              "expr": "mac_gpu_power_watts or mac_gpu_power",
+              "expr": "macmon_gpu_power_watts",
               "legendFormat": "GPU Power",
               "refId": "A"
             },
@@ -210,7 +208,7 @@ data:
                 "type": "prometheus",
                 "uid": "Prometheus"
               },
-              "expr": "mac_cpu_power_watts or mac_cpu_power",
+              "expr": "macmon_cpu_power_watts",
               "legendFormat": "CPU Power",
               "refId": "B"
             },
@@ -219,8 +217,8 @@ data:
                 "type": "prometheus",
                 "uid": "Prometheus"
               },
-              "expr": "mac_ane_power_watts or mac_ane_power",
-              "legendFormat": "ANE Power",
+              "expr": "macmon_sys_power_watts",
+              "legendFormat": "System Power",
               "refId": "C"
             }
           ]
@@ -234,14 +232,15 @@ data:
             "y": 8
           },
           "id": 6,
-          "title": "Apple Silicon Temperature & Memory Metrics",
+          "title": "Apple Silicon Temperature (°C)",
           "type": "timeseries",
           "fieldConfig": {
             "defaults": {
               "custom": {
                 "drawStyle": "line",
                 "lineInterpolation": "smooth"
-              }
+              },
+              "unit": "celsius"
             },
             "overrides": []
           },
@@ -251,8 +250,8 @@ data:
                 "type": "prometheus",
                 "uid": "Prometheus"
               },
-              "expr": "mac_temperature_celsius or mac_cpu_temp_celsius or mac_gpu_temp_celsius",
-              "legendFormat": "Temperature (°C)",
+              "expr": "macmon_gpu_temp_celsius",
+              "legendFormat": "GPU Temp",
               "refId": "A"
             },
             {
@@ -260,8 +259,8 @@ data:
                 "type": "prometheus",
                 "uid": "Prometheus"
               },
-              "expr": "mac_memory_used_bytes or mac_ram_used_bytes",
-              "legendFormat": "RAM Used (Bytes)",
+              "expr": "macmon_cpu_temp_celsius",
+              "legendFormat": "CPU Temp",
               "refId": "B"
             }
           ]
@@ -279,5 +278,5 @@ data:
       "timezone": "browser",
       "title": "Apple Silicon M4 Hardware Metrics (macmon)",
       "uid": "macmon-apple-silicon-metrics",
-      "version": 1
+      "version": 2
     }
