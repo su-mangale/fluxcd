@@ -6,3 +6,4 @@ resources:
   - ../base/image-automation
   - ../base/metrics-server
   - ../base/gitea
+  - ../base/monitoring
