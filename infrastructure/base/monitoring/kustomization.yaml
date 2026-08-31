@@ -8,3 +8,4 @@ resources:
   - grafana-helmrelease.yaml
   - macmon-host-endpoint.yaml
   - grafana-dashboard-configmap.yaml
+  - ingress.yaml
