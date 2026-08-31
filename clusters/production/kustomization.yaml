@@ -4,3 +4,4 @@ resources:
   - flux-system
   - infrastructure.yaml
   - apps.yaml
+  - m4-gpu-monitoring.yaml

@@ -1,0 +1,16 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: macmon-host-monitor
+  namespace: monitoring
+  labels:
+    app: macmon-host-metrics
+spec:
+  selector:
+    matchLabels:
+      app: macmon-host-metrics
+  endpoints:
+    - port: metrics
+      interval: 5s
+      scrapeTimeout: 3s
+      path: /metrics
