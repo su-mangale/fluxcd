@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: k8s-dashboard
-          image: ghcr.io/su-mangale/ykp-k8s-dashboard:20260831T105634Z-sha-e040fba # {"$imagepolicy": "ykp-system:ykp-k8s-dashboard"}
+          image: ghcr.io/su-mangale/ykp-k8s-dashboard:20260831T111509Z-sha-c008a7c # {"$imagepolicy": "ykp-system:ykp-k8s-dashboard"}
           imagePullPolicy: Always
           ports:
             - containerPort: 3004
