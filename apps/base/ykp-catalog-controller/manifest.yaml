@@ -64,6 +64,15 @@ spec:
             - --health-probe-bind-address=:8081
             - --metrics-bind-address=:8080
             - --leader-elect=false
+          env:
+            - name: YKP_API_URL
+              value: "http://ykp-api.ykp-system.svc.cluster.local:8080"
+            - name: YKP_CATALOG_REGISTRY_URL
+              value: "http://ykp-api.ykp-system.svc.cluster.local:8080/api/catalog"
+            - name: YKP_AUDIT_URL
+              value: "http://ykp-audit.ykp-system.svc.cluster.local:3005"
+            - name: YKP_AUTH_URL
+              value: "http://ykp-auth.ykp-system.svc.cluster.local:3001"
           ports:
             - containerPort: 8080
               name: metrics
