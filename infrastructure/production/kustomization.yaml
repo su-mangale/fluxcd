@@ -7,4 +7,4 @@ resources:
   - ../base/metrics-server
   - ../base/gitea
   - ../base/monitoring
-  - ./cert-manager
+  - ../base/cert-manager
