@@ -5,5 +5,5 @@ resources:
   - ../base/namespaces/ykp-system
   - ../base/image-automation
   - ../base/metrics-server
-  - ../base/monitoring
+  # - ../base/monitoring
   - ../base/cert-manager
