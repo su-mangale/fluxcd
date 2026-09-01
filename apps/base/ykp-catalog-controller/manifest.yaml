@@ -59,7 +59,7 @@ spec:
       serviceAccountName: ykp-catalog-controller-sa
       containers:
         - name: manager
-          image: ghcr.io/su-mangale/ykp-catalog-controller:20260901T093425Z-sha-d0a6919 # {"$imagepolicy": "ykp-system:ykp-catalog-controller"}
+          image: ghcr.io/su-mangale/ykp-catalog-controller:20260901T094722Z-sha-423f17e # {"$imagepolicy": "ykp-system:ykp-catalog-controller"}
           imagePullPolicy: Always
           command:
             - /manager
