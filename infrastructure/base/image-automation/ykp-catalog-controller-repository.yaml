@@ -1,0 +1,8 @@
+apiVersion: image.toolkit.fluxcd.io/v1
+kind: ImageRepository
+metadata:
+  name: ykp-catalog-controller
+  namespace: ykp-system
+spec:
+  image: ghcr.io/su-mangale/ykp-catalog-controller
+  interval: 1m

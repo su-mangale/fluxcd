@@ -5,6 +5,7 @@ resources:
   - ykp-auth.yaml
   - ykp-api.yaml
   - ykp-catalog.yaml
+  - ykp-catalog-controller.yaml
   - ykp-dashboard.yaml
   - ykp-k8s-dashboard.yaml
   - ykp-audit.yaml

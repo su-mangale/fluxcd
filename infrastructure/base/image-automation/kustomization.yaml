@@ -7,6 +7,8 @@ resources:
   - ykp-auth-policy.yaml
   - ykp-catalog-repository.yaml
   - ykp-catalog-policy.yaml
+  - ykp-catalog-controller-repository.yaml
+  - ykp-catalog-controller-policy.yaml
   - ykp-shell-repository.yaml
   - ykp-shell-policy.yaml
   - ykp-api-repository.yaml

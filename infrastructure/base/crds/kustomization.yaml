@@ -6,6 +6,4 @@ kind: Kustomization
 resources:
   # Catalog & Application Management
   - catalog.ykp.io_platformapps.yaml
-  # Future CRDs can be added here, e.g.:
-  # - catalog.ykp.io_platformcatalogs.yaml
-  # - core.ykp.io_tenants.yaml
+  - catalog.ykp.io_platformappinfos.yaml
