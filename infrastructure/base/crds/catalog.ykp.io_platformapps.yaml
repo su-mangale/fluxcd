@@ -36,6 +36,10 @@ spec:
           type: string
           jsonPath: .status.phase
           description: "Current application deployment phase"
+        - name: URL
+          type: string
+          jsonPath: .status.url
+          description: "Discovered Web UI / Dashboard URL"
         - name: Version
           type: string
           jsonPath: .spec.version
@@ -119,6 +123,9 @@ spec:
                 lastReconciled:
                   type: string
                   format: date-time
+                url:
+                  type: string
+                  description: "Resolved Web UI / Ingress Dashboard URL"
                 message:
                   type: string
                   description: "Human readable description of current phase or error"
