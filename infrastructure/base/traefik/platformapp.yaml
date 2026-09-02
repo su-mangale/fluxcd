@@ -21,3 +21,5 @@ spec:
     providers:
       kubernetesGateway:
         enabled: false
+    nodeSelector:
+      ingress-ready: "true"
