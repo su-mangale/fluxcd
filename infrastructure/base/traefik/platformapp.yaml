@@ -1,0 +1,23 @@
+apiVersion: catalog.ykp.io/v1alpha1
+kind: PlatformApp
+metadata:
+  name: traefik
+  namespace: ykp-system
+  labels:
+    app.kubernetes.io/name: traefik
+    app.kubernetes.io/part-of: ykp-platform
+spec:
+  catalogAppId: traefik
+  version: "v34.5.0"
+  enabled: true
+  targetNamespace: traefik
+  lifecycle:
+    preservePVCsOnDelete: true
+    purgeCRDsOnDelete: false
+  valuesOverrides:
+    ingressRoute:
+      dashboard:
+        enabled: true
+    providers:
+      kubernetesGateway:
+        enabled: false

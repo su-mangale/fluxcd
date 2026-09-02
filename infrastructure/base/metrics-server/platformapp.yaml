@@ -1,0 +1,20 @@
+apiVersion: catalog.ykp.io/v1alpha1
+kind: PlatformApp
+metadata:
+  name: metrics-server
+  namespace: ykp-system
+  labels:
+    app.kubernetes.io/name: metrics-server
+    app.kubernetes.io/part-of: ykp-platform
+spec:
+  catalogAppId: metrics-server
+  version: "v3.12.2"
+  enabled: true
+  targetNamespace: kube-system
+  lifecycle:
+    preservePVCsOnDelete: true
+    purgeCRDsOnDelete: false
+  valuesOverrides:
+    args:
+      - --kubelet-insecure-tls
+      - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
