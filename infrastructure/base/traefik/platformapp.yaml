@@ -15,11 +15,28 @@ spec:
     preservePVCsOnDelete: true
     purgeCRDsOnDelete: false
   valuesOverrides:
+    service:
+      type: ClusterIP
+    ports:
+      web:
+        port: 8000
+        hostPort: 80
+        expose:
+          default: true
+      websecure:
+        port: 8443
+        hostPort: 443
+        expose:
+          default: true
+    nodeSelector:
+      ingress-ready: "true"
+    tolerations:
+      - key: "node-role.kubernetes.io/control-plane"
+        operator: "Exists"
+        effect: "NoSchedule"
     ingressRoute:
       dashboard:
         enabled: true
     providers:
       kubernetesGateway:
         enabled: false
-    nodeSelector:
-      ingress-ready: "true"
