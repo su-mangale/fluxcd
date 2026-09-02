@@ -37,6 +37,9 @@ spec:
     ingressRoute:
       dashboard:
         enabled: true
+        matchRule: Host(`traefik.localhost`)
+        entryPoints:
+          - web
     providers:
       kubernetesGateway:
         enabled: false
