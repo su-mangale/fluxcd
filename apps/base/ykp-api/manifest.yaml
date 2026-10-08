@@ -41,13 +41,6 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
-          env:
-            - name: YKP_SESSION_SECRET
-              valueFrom:
-                secretKeyRef:
-                  name: ykp-session-secret
-                  key: YKP_SESSION_SECRET
-                  optional: true
           resources:
             limits:
               cpu: 500m
