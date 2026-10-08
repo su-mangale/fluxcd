@@ -1,0 +1,21 @@
+apiVersion: catalog.ykp.io/v1alpha1
+kind: PlatformApp
+metadata:
+  name: gitea
+  namespace: ykp-system
+  labels:
+    app.kubernetes.io/name: gitea
+    app.kubernetes.io/part-of: ykp-platform
+spec:
+  catalogAppId: gitea
+  version: "10.6.0"
+  enabled: true
+  targetNamespace: gitea
+  lifecycle:
+    preservePVCsOnDelete: true
+    purgeCRDsOnDelete: false
+  valuesOverrides:
+    gitea:
+      config:
+        actions:
+          ENABLED: true

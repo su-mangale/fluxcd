@@ -1,5 +1,4 @@
 resources:
   - namespace.yaml
-  - helmrepo.yaml
-  - helmrelease.yaml
+  - platformapp.yaml
   - selfsigned-issuer.yaml

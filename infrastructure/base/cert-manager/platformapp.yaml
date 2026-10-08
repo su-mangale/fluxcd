@@ -1,0 +1,18 @@
+apiVersion: catalog.ykp.io/v1alpha1
+kind: PlatformApp
+metadata:
+  name: cert-manager
+  namespace: ykp-system
+  labels:
+    app.kubernetes.io/name: cert-manager
+    app.kubernetes.io/part-of: ykp-platform
+spec:
+  catalogAppId: cert-manager
+  version: "v1.17.1"
+  enabled: true
+  targetNamespace: cert-manager
+  lifecycle:
+    preservePVCsOnDelete: true
+    purgeCRDsOnDelete: false
+  valuesOverrides:
+    installCRDs: true
