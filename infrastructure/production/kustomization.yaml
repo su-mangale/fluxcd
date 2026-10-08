@@ -6,3 +6,5 @@ resources:
   - ../base/image-automation
   - ../base/metrics-server
   # - ../base/traefik
+
+  
