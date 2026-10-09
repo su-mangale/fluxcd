@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: traefik-values
-  namespace: ykp-system
+  namespace: traefik
   labels:
     app.kubernetes.io/name: traefik
     app.kubernetes.io/part-of: ykp-platform
