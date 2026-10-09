@@ -14,5 +14,6 @@ spec:
   lifecycle:
     preservePVCsOnDelete: true
     purgeCRDsOnDelete: false
-  valuesOverrides:
-    installCRDs: true
+  valuesFrom:
+    - kind: ConfigMap
+      name: cert-manager-values

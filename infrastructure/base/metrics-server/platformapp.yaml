@@ -14,7 +14,6 @@ spec:
   lifecycle:
     preservePVCsOnDelete: true
     purgeCRDsOnDelete: false
-  valuesOverrides:
-    args:
-      - --kubelet-insecure-tls
-      - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
+  valuesFrom:
+    - kind: ConfigMap
+      name: metrics-server-values

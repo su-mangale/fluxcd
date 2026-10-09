@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: traefik-values
+  namespace: ykp-system
+  labels:
+    app.kubernetes.io/name: traefik
+    app.kubernetes.io/part-of: ykp-platform
+data:
+  values.yaml: |
+    service:
+      type: ClusterIP
+    ports:
+      web:
+        port: 8000
+        hostPort: 80
+        expose:
+          default: true
+      websecure:
+        port: 8443
+        hostPort: 443
+        expose:
+          default: true
+    nodeSelector:
+      ingress-ready: "true"
+    tolerations:
+      - key: "node-role.kubernetes.io/control-plane"
+        operator: "Exists"
+        effect: "NoSchedule"
+    ingressRoute:
+      dashboard:
+        enabled: true
+        matchRule: Host(`traefik.localhost`)
+        entryPoints:
+          - web
+    providers:
+      kubernetesGateway:
+        enabled: false

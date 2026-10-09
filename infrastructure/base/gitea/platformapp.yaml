@@ -17,7 +17,6 @@ spec:
   valuesFrom:
     - kind: ConfigMap
       name: gitea-values
-      valuesKey: values.yaml
   remediation:
     autoRollback: true
     retries: 3
