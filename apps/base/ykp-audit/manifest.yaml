@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: audit
-          image: ghcr.io/su-mangale/ykp-audit:20261009T072018Z-sha-3470c9f # {"$imagepolicy": "ykp-system:ykp-audit"}
+          image: ghcr.io/su-mangale/ykp-audit:20261009T113506Z-sha-3e33a16 # {"$imagepolicy": "ykp-system:ykp-audit"}
           imagePullPolicy: Always
           ports:
             - containerPort: 3005
