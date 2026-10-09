@@ -95,6 +95,58 @@ spec:
                       type: boolean
                       description: "If true, associated custom resource definitions will be removed on uninstall"
                       default: false
+                valuesFrom:
+                  type: array
+                  description: "External ConfigMap or Secret containing values overrides"
+                  items:
+                    type: object
+                    required:
+                      - kind
+                      - name
+                    properties:
+                      kind:
+                        type: string
+                        enum:
+                          - ConfigMap
+                          - Secret
+                      name:
+                        type: string
+                      valuesKey:
+                        type: string
+                dependsOn:
+                  type: array
+                  description: "List of prerequisite catalog app IDs or PlatformApp names"
+                  items:
+                    type: string
+                remediation:
+                  type: object
+                  description: "Automated rollback rules on Helm failure"
+                  properties:
+                    autoRollback:
+                      type: boolean
+                      default: true
+                    retries:
+                      type: integer
+                      default: 3
+                targetRef:
+                  type: object
+                  description: "Target cluster or fleet binding"
+                  properties:
+                    kind:
+                      type: string
+                      enum:
+                        - Cluster
+                        - Fleet
+                    name:
+                      type: string
+                clusterSelector:
+                  type: object
+                  description: "Label selector for dynamic fleet targeting"
+                  properties:
+                    matchLabels:
+                      type: object
+                      additionalProperties:
+                        type: string
             status:
               type: object
               properties:
