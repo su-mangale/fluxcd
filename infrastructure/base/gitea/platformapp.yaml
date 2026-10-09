@@ -14,13 +14,10 @@ spec:
   lifecycle:
     preservePVCsOnDelete: true
     purgeCRDsOnDelete: false
-  dependsOn:
-    - cert-manager
+  valuesFrom:
+    - kind: ConfigMap
+      name: gitea-values
+      valuesKey: values.yaml
   remediation:
     autoRollback: true
     retries: 3
-  valuesOverrides:
-    gitea:
-      config:
-        actions:
-          ENABLED: true
