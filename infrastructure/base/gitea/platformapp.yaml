@@ -8,7 +8,7 @@ metadata:
     app.kubernetes.io/part-of: ykp-platform
 spec:
   catalogAppId: gitea
-  version: "10.6.0"
+  version: "12.6.0"
   enabled: true
   targetNamespace: gitea
   lifecycle:
