@@ -8,7 +8,21 @@ metadata:
     app.kubernetes.io/part-of: ykp-platform
 data:
   values.yaml: |
+    ingress:
+      enabled: true
+      className: cilium
+      hosts:
+        - host: gitea.localhost
+          paths:
+            - path: /
+              pathType: Prefix
     gitea:
       config:
+        server:
+          DOMAIN: gitea.localhost
+          ROOT_URL: http://gitea.localhost/
         actions:
           ENABLED: true
+    persistence:
+      enabled: true
+      size: 10Gi

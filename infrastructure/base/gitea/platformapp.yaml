@@ -17,6 +17,25 @@ spec:
   valuesFrom:
     - kind: ConfigMap
       name: gitea-values
+  valuesOverrides:
+    ingress:
+      enabled: true
+      className: cilium
+      hosts:
+        - host: gitea.localhost
+          paths:
+            - path: /
+              pathType: Prefix
+    gitea:
+      config:
+        server:
+          DOMAIN: gitea.localhost
+          ROOT_URL: http://gitea.localhost/
+        actions:
+          ENABLED: true
+    persistence:
+      enabled: true
+      size: 10Gi
   remediation:
     autoRollback: true
     retries: 3
