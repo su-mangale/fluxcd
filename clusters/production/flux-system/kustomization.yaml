@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - gotk-components.yaml
   - gotk-sync.yaml
+  - flux-operator-ingress-netpol.yaml
